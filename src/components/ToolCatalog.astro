@@ -25,12 +25,19 @@ const tools: Tool[] = [
   { name: 'get_network_logs', description: 'Capture OkHttp HTTP traffic from logcat', category: 'Observability', status: 'ready' },
   { name: 'manage_proxy', description: 'Set/clear device HTTP proxy', category: 'Data', status: 'ready' },
   { name: 'get_feature_flags', description: 'Read/write SharedPreferences', category: 'Data', status: 'ready' },
+  // Embedded Agent — Runtime Inspection (Wave 1)
+  { name: 'inspect_permissions', description: 'Runtime permissions — granted, denied, rationale needed', category: 'Embedded Agent', status: 'ready' },
+  { name: 'inspect_process_lifecycle', description: 'Activity/Fragment lifecycle states for all components', category: 'Embedded Agent', status: 'ready' },
+  { name: 'inspect_navigation_graph', description: 'Navigation graph, back stack, deep link patterns', category: 'Embedded Agent', status: 'ready' },
+  { name: 'inspect_datastore', description: 'Jetpack DataStore preferences — all keys and values', category: 'Embedded Agent', status: 'ready' },
+  { name: 'inspect_coroutine_state', description: 'Active coroutines — state, dispatchers, job hierarchy', category: 'Embedded Agent', status: 'ready' },
+  { name: 'execute_deeplink', description: 'Fire a deep link URI and report which handler resolved', category: 'Embedded Agent', status: 'ready' },
+  { name: 'simulate_process_death', description: 'Recreate Activity to test save/restore state handling', category: 'Embedded Agent', status: 'ready' },
   // Planned
   { name: 'audit_accessibility', description: 'Full WCAG 2.1 audit: touch targets, contrast, focus', category: 'Accessibility', status: 'planned' },
   { name: 'track_recompositions', description: 'Count recompositions per composable per frame', category: 'Compose', status: 'planned' },
   { name: 'analyze_stability', description: 'Report stability classification of composable params', category: 'Compose', status: 'planned' },
   { name: 'detect_memory_leaks', description: 'LeakCanary heap analysis with reference chains', category: 'Performance', status: 'planned' },
-  { name: 'inspect_navigation_graph', description: 'Navigation graph, back stack, deep link patterns', category: 'UI Inspection', status: 'planned' },
   { name: 'profile_startup', description: 'Cold/warm/hot start breakdown with bottlenecks', category: 'Performance', status: 'planned' },
   { name: 'test_edge_cases', description: 'Simulate no network, low memory, date boundaries', category: 'Accessibility', status: 'planned' },
 ];
@@ -42,7 +49,7 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        <span class="gradient-text">16 tools</span> built. More coming.
+        <span class="gradient-text">23 tools</span> built. More coming.
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
         Every tool is an MCP endpoint your AI can call. Headless rendering, device interaction, performance profiling, and more.

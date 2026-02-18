@@ -3,36 +3,43 @@ interface Tool {
   name: string;
   description: string;
   category: string;
-  status: 'ready' | 'planned';
+  status: 'shipped' | 'planned';
 }
 
 const tools: Tool[] = [
   // Shipped - Headless
-  { name: 'insights', description: 'Project overview — preview count, golden coverage, device status', category: 'Observability', status: 'ready' },
-  { name: 'render', description: 'Render any @Preview headlessly via Roborazzi → PNG', category: 'Compose', status: 'ready' },
-  { name: 'list_previews', description: 'Discover all @Preview functions — file, line, params', category: 'Compose', status: 'ready' },
-  { name: 'verify', description: 'Single-call PASS/FAIL: render + golden + accessibility', category: 'Compose', status: 'ready' },
-  { name: 'render_batch', description: 'Render/verify multiple previews with compact summary', category: 'Compose', status: 'ready' },
-  { name: 'diff', description: 'Golden management: verify, record, or update baselines', category: 'Compose', status: 'ready' },
+  { name: 'insights', description: 'Project overview — preview count, golden coverage, device status', category: 'Observability', status: 'shipped' },
+  { name: 'render', description: 'Render any @Preview headlessly via Roborazzi → PNG', category: 'Compose', status: 'shipped' },
+  { name: 'list_previews', description: 'Discover all @Preview functions — file, line, params', category: 'Compose', status: 'shipped' },
+  { name: 'verify', description: 'Single-call PASS/FAIL: render + golden + accessibility', category: 'Compose', status: 'shipped' },
+  { name: 'render_batch', description: 'Render/verify multiple previews with compact summary', category: 'Compose', status: 'shipped' },
+  { name: 'diff', description: 'Golden management: verify, record, or update baselines', category: 'Compose', status: 'shipped' },
   // Shipped - Device
-  { name: 'preflight', description: 'Check device + app state — connected, installed, screen', category: 'Observability', status: 'ready' },
-  { name: 'inspect_ui_tree', description: 'Dump live Compose/View hierarchy with a11y warnings', category: 'UI Inspection', status: 'ready' },
-  { name: 'device_interact', description: 'Tap, swipe, type, scroll — AI navigates the app', category: 'UI Control', status: 'ready' },
-  { name: 'get_recomposition_stats', description: 'Find recomposition hotspots via compiler metrics', category: 'Performance', status: 'ready' },
-  { name: 'take_device_screenshot', description: 'Capture device screen, auto-saved to disk', category: 'UI Inspection', status: 'ready' },
-  { name: 'build_and_deploy', description: 'Gradle build + install APK on device', category: 'Observability', status: 'ready' },
-  { name: 'get_build_status', description: 'Check build success and APK version match', category: 'Observability', status: 'ready' },
-  { name: 'get_network_logs', description: 'Capture OkHttp HTTP traffic from logcat', category: 'Observability', status: 'ready' },
-  { name: 'manage_proxy', description: 'Set/clear device HTTP proxy', category: 'Data', status: 'ready' },
-  { name: 'get_feature_flags', description: 'Read/write SharedPreferences', category: 'Data', status: 'ready' },
+  { name: 'preflight', description: 'Check device + app state — connected, installed, screen', category: 'Observability', status: 'shipped' },
+  { name: 'inspect_ui_tree', description: 'Dump live Compose/View hierarchy with a11y warnings', category: 'UI Inspection', status: 'shipped' },
+  { name: 'device_interact', description: 'Tap, swipe, type, scroll — AI navigates the app', category: 'UI Control', status: 'shipped' },
+  { name: 'get_recomposition_stats', description: 'Find recomposition hotspots via compiler metrics', category: 'Performance', status: 'shipped' },
+  { name: 'take_device_screenshot', description: 'Capture device screen, auto-saved to disk', category: 'UI Inspection', status: 'shipped' },
+  { name: 'build_and_deploy', description: 'Gradle build + install APK on device', category: 'Observability', status: 'shipped' },
+  { name: 'get_build_status', description: 'Check build success and APK version match', category: 'Observability', status: 'shipped' },
+  { name: 'get_network_logs', description: 'Capture OkHttp HTTP traffic from logcat', category: 'Observability', status: 'shipped' },
+  { name: 'manage_proxy', description: 'Set/clear device HTTP proxy', category: 'Data', status: 'shipped' },
+  { name: 'get_feature_flags', description: 'Read/write SharedPreferences', category: 'Data', status: 'shipped' },
   // Embedded Agent — Runtime Inspection (Wave 1)
-  { name: 'inspect_permissions', description: 'Runtime permissions — granted, denied, rationale needed', category: 'Embedded Agent', status: 'ready' },
-  { name: 'inspect_process_lifecycle', description: 'Activity/Fragment lifecycle states for all components', category: 'Embedded Agent', status: 'ready' },
-  { name: 'inspect_navigation_graph', description: 'Navigation graph, back stack, deep link patterns', category: 'Embedded Agent', status: 'ready' },
-  { name: 'inspect_datastore', description: 'Jetpack DataStore preferences — all keys and values', category: 'Embedded Agent', status: 'ready' },
-  { name: 'inspect_coroutine_state', description: 'Active coroutines — state, dispatchers, job hierarchy', category: 'Embedded Agent', status: 'ready' },
-  { name: 'execute_deeplink', description: 'Fire a deep link URI and report which handler resolved', category: 'Embedded Agent', status: 'ready' },
-  { name: 'simulate_process_death', description: 'Recreate Activity to test save/restore state handling', category: 'Embedded Agent', status: 'ready' },
+  { name: 'inspect_permissions', description: 'Runtime permissions — granted, denied, rationale needed', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_process_lifecycle', description: 'Activity/Fragment lifecycle states for all components', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_navigation_graph', description: 'Navigation graph, back stack, deep link patterns', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_datastore', description: 'Jetpack DataStore preferences — all keys and values', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_coroutine_state', description: 'Active coroutines — state, dispatchers, job hierarchy', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'execute_deeplink', description: 'Fire a deep link URI and report which handler resolved', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'simulate_process_death', description: 'Recreate Activity to test save/restore state handling', category: 'Embedded Agent', status: 'shipped' },
+  // Expert Prompts
+  { name: 'accessibility-checker', description: 'WCAG 2.1 audit — touch targets, contrast, TalkBack', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'compose-performance', description: 'Recomposition traps — unstable params, lambda allocations', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'kmp-architect', description: 'KMP architecture — shared code, expect/actual patterns', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'ui-reviewer', description: 'Visual quality — spacing, typography, Material 3 compliance', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'screenshot-test-writer', description: 'Generate test code for Paparazzi, Roborazzi, or goldens', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'spec-verifier', description: 'Full spec-driven verification — parse spec, map, verify, report', category: 'Expert Prompts', status: 'shipped' },
   // Planned
   { name: 'audit_accessibility', description: 'Full WCAG 2.1 audit: touch targets, contrast, focus', category: 'Accessibility', status: 'planned' },
   { name: 'track_recompositions', description: 'Count recompositions per composable per frame', category: 'Compose', status: 'planned' },
@@ -49,7 +56,7 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        <span class="gradient-text">23 tools</span> built. More coming.
+        <span class="gradient-text">29 tools</span> built. More coming.
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
         Every tool is an MCP endpoint your AI can call. Headless rendering, device interaction, performance profiling, and more.

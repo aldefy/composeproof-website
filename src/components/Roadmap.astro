@@ -3,13 +3,13 @@ const waves = [
   {
     number: 1,
     title: 'Foundation',
-    status: 'current',
+    status: 'shipped',
     items: ['inspect_navigation_graph', 'inspect_coroutine_state', 'inspect_datastore', 'inspect_permissions', 'execute_deeplink', 'inspect_process_lifecycle', 'simulate_process_death'],
   },
   {
     number: 2,
     title: 'Compose Intelligence',
-    status: 'next',
+    status: 'current',
     items: ['track_recompositions', 'analyze_stability', 'inspect_compose_state', 'profile_lazy_list', 'semantic_ui_query'],
   },
   {
@@ -50,6 +50,7 @@ const waves = [
           <div class="flex items-center gap-4 mb-4">
             <div class:list={[
               'w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm',
+              wave.status === 'shipped' ? 'bg-green-500/20 text-green-400' :
               wave.status === 'current' ? 'bg-brand-purple/20 text-brand-purple' :
               wave.status === 'next' ? 'bg-brand-teal/20 text-brand-teal' :
               'bg-brand-card text-slate-400',
@@ -60,11 +61,12 @@ const waves = [
               <h3 class="text-lg font-semibold">{wave.title}</h3>
               <span class:list={[
                 'text-xs uppercase tracking-wider',
+                wave.status === 'shipped' ? 'text-green-400' :
                 wave.status === 'current' ? 'text-brand-purple' :
                 wave.status === 'next' ? 'text-brand-teal' :
                 'text-slate-400',
               ]}>
-                {wave.status === 'current' ? 'In progress' : wave.status === 'next' ? 'Up next' : 'Planned'}
+                {wave.status === 'shipped' ? 'Shipped' : wave.status === 'current' ? 'In progress' : wave.status === 'next' ? 'Up next' : 'Planned'}
               </span>
             </div>
           </div>

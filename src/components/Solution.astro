@@ -5,14 +5,14 @@
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Two modes. <span class="gradient-text">Complete coverage.</span>
+        Three layers. <span class="gradient-text">Complete coverage.</span>
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        ComposeProof works at build-time and run-time, giving AI assistants full visibility into your Compose UI.
+        ComposeProof works at build-time, run-time, and inside the app process — giving AI assistants full visibility into your Compose UI.
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8">
       <!-- Build-time: Headless -->
       <div class="rounded-xl border border-brand-purple/30 bg-brand-card/30 overflow-hidden glow-purple">
         <div class="p-6 border-b border-brand-border">
@@ -61,7 +61,7 @@
             </div>
             <div>
               <h3 class="text-xl font-semibold">Device Inspection</h3>
-              <p class="text-sm text-slate-400">Run-time / Live</p>
+              <p class="text-sm text-slate-400">Run-time / ADB</p>
             </div>
           </div>
           <p class="text-slate-400 text-sm">
@@ -87,7 +87,42 @@
           </div>
         </div>
       </div>
-    </div>
 
+      <!-- In-process: Embedded Agent -->
+      <div class="rounded-xl border border-yellow-500/30 bg-brand-card/30 overflow-hidden" style="box-shadow: 0 0 40px rgba(234, 179, 8, 0.05);">
+        <div class="p-6 border-b border-brand-border">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Embedded Agent</h3>
+              <p class="text-sm text-slate-400">In-process / SDK</p>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm">
+            An in-app debug SDK gives the AI direct access to app internals — permissions, lifecycle, navigation, DataStore, coroutines — from inside the process.
+          </p>
+        </div>
+        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
+          <div><span class="text-slate-400"># AI inspects app internals</span></div>
+          <div class="mt-1"><span class="text-yellow-400">→</span> inspect_permissions</div>
+          <div class="text-slate-400 mt-1">  CAMERA — denied (rationale needed)</div>
+          <div class="mt-1"><span class="text-yellow-400">→</span> simulate_process_death</div>
+          <div class="text-slate-400 mt-1">  Killed process, relaunched...</div>
+          <div class="text-green-400 mt-1">  ✓ Activity restored after process death</div>
+        </div>
+        <div class="p-4 border-t border-brand-border">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_permissions</span>
+            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_lifecycle</span>
+            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_navigation</span>
+            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">simulate_process_death</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

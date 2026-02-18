@@ -60,6 +60,7 @@ const fullSessionUrl = '/demos/full-session.mp4';
               controls
               preload="metadata"
               playsinline
+              poster={demo.videoUrl.replace('.mp4', '.jpg')}
             >
               <source src={demo.videoUrl} type="video/mp4" />
               Your browser does not support video playback.
@@ -84,6 +85,7 @@ const fullSessionUrl = '/demos/full-session.mp4';
           controls
           preload="metadata"
           playsinline
+          poster="/demos/full-session.jpg"
         >
           <source src={fullSessionUrl} type="video/mp4" />
           Your browser does not support video playback.

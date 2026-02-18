@@ -1,0 +1,98 @@
+---
+interface Demo {
+  title: string;
+  description: string;
+  videoUrl: string;
+  step: number;
+}
+
+const demos: Demo[] = [
+  {
+    step: 1,
+    title: 'Build, deploy & launch',
+    description: 'AI runs preflight to detect the device, picks the right Gradle variant, builds, installs, and launches — all from a single natural language prompt.',
+    videoUrl: 'https://github.com/user-attachments/assets/34a5cca8-2a2c-4c61-87a4-e8c5e624b96f',
+  },
+  {
+    step: 2,
+    title: 'AI discovers the interaction model',
+    description: 'The FAB tap fails, so the AI reads source code, discovers the FAB opens a bottom sheet sticker tray, and switches strategy. Every action auto-screenshots.',
+    videoUrl: 'https://github.com/user-attachments/assets/658ec2c6-1853-4e16-b1fe-781a3a46357e',
+  },
+  {
+    step: 3,
+    title: 'Drag testing with coordinate recalculation',
+    description: 'ADB swipe doesn\'t trigger Compose gestures. The AI switches to raw touch events, detects resolution mismatch, recalculates coordinates, and successfully drags stickers.',
+    videoUrl: 'https://github.com/user-attachments/assets/14f0f869-e8f8-44a7-b93b-8009f0151815',
+  },
+  {
+    step: 4,
+    title: 'Results & persistent screenshots',
+    description: 'AI produces a structured test report (3/3 pass), notes z-ordering and animations. Every screenshot from the session is saved to disk for human review.',
+    videoUrl: 'https://github.com/user-attachments/assets/4767c4cf-15f5-42f2-820a-9c45b86849c3',
+  },
+];
+
+const fullSessionUrl = 'https://github.com/user-attachments/assets/393522a6-a94d-4270-b003-8eacb5387158';
+---
+
+<section class="py-20 lg:py-28" id="demos">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-6">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        See it <span class="gradient-text">in action</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        One prompt, zero human intervention. AI builds the app, discovers UI patterns, tests interactions, and reports results.
+      </p>
+    </div>
+
+    <p class="text-center text-sm text-slate-500 mb-12">
+      Recorded on a Pixel 9 Pro Fold with <a href="https://github.com/aldefy/StickerExplode" class="text-brand-purple hover:underline" target="_blank" rel="noopener">StickerExplode</a> demo app.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {demos.map((demo) => (
+        <div class="rounded-xl border border-brand-border bg-brand-card/20 overflow-hidden">
+          <div class="aspect-video bg-brand-darker relative">
+            <video
+              class="w-full h-full object-contain"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src={demo.videoUrl} type="video/mp4" />
+              Your browser does not support video playback.
+            </video>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-sm font-mono text-brand-purple" aria-hidden="true">0{demo.step}</span>
+              <h3 class="text-lg font-semibold">{demo.title}</h3>
+            </div>
+            <p class="text-sm text-slate-400">{demo.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Full session -->
+    <div class="mt-10 rounded-xl border border-brand-border bg-brand-card/20 overflow-hidden">
+      <div class="aspect-video bg-brand-darker">
+        <video
+          class="w-full h-full object-contain"
+          controls
+          preload="metadata"
+          playsinline
+        >
+          <source src={fullSessionUrl} type="video/mp4" />
+          Your browser does not support video playback.
+        </video>
+      </div>
+      <div class="p-5 text-center">
+        <h3 class="text-lg font-semibold mb-1">Full uncut session</h3>
+        <p class="text-sm text-slate-400">6 minutes — from prompt to test report, no edits.</p>
+      </div>
+    </div>
+  </div>
+</section>

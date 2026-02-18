@@ -1,0 +1,118 @@
+---
+interface Tool {
+  name: string;
+  description: string;
+  category: string;
+  status: 'shipped' | 'planned';
+}
+
+const tools: Tool[] = [
+  // Shipped - Headless
+  { name: 'insights', description: 'Project overview — preview count, golden coverage, device status', category: 'Observability', status: 'shipped' },
+  { name: 'render', description: 'Render any @Preview headlessly via Roborazzi → PNG', category: 'Compose', status: 'shipped' },
+  { name: 'list_previews', description: 'Discover all @Preview functions — file, line, params', category: 'Compose', status: 'shipped' },
+  { name: 'verify', description: 'Single-call PASS/FAIL: render + golden + accessibility', category: 'Compose', status: 'shipped' },
+  { name: 'render_batch', description: 'Render/verify multiple previews with compact summary', category: 'Compose', status: 'shipped' },
+  { name: 'diff', description: 'Golden management: verify, record, or update baselines', category: 'Compose', status: 'shipped' },
+  // Shipped - Device
+  { name: 'preflight', description: 'Check device + app state — connected, installed, screen', category: 'Observability', status: 'shipped' },
+  { name: 'inspect_ui_tree', description: 'Dump live Compose/View hierarchy with a11y warnings', category: 'UI Inspection', status: 'shipped' },
+  { name: 'device_interact', description: 'Tap, swipe, type, scroll — AI navigates the app', category: 'UI Control', status: 'shipped' },
+  { name: 'get_recomposition_stats', description: 'Find recomposition hotspots via compiler metrics', category: 'Performance', status: 'shipped' },
+  { name: 'take_device_screenshot', description: 'Capture device screen, auto-saved to disk', category: 'UI Inspection', status: 'shipped' },
+  { name: 'build_and_deploy', description: 'Gradle build + install APK on device', category: 'Observability', status: 'shipped' },
+  { name: 'get_build_status', description: 'Check build success and APK version match', category: 'Observability', status: 'shipped' },
+  { name: 'get_network_logs', description: 'Capture OkHttp HTTP traffic from logcat', category: 'Observability', status: 'shipped' },
+  { name: 'manage_proxy', description: 'Set/clear device HTTP proxy', category: 'Data', status: 'shipped' },
+  { name: 'get_feature_flags', description: 'Read/write SharedPreferences', category: 'Data', status: 'shipped' },
+  // Planned
+  { name: 'audit_accessibility', description: 'Full WCAG 2.1 audit: touch targets, contrast, focus', category: 'Accessibility', status: 'planned' },
+  { name: 'track_recompositions', description: 'Count recompositions per composable per frame', category: 'Compose', status: 'planned' },
+  { name: 'analyze_stability', description: 'Report stability classification of composable params', category: 'Compose', status: 'planned' },
+  { name: 'detect_memory_leaks', description: 'LeakCanary heap analysis with reference chains', category: 'Performance', status: 'planned' },
+  { name: 'inspect_navigation_graph', description: 'Navigation graph, back stack, deep link patterns', category: 'UI Inspection', status: 'planned' },
+  { name: 'profile_startup', description: 'Cold/warm/hot start breakdown with bottlenecks', category: 'Performance', status: 'planned' },
+  { name: 'test_edge_cases', description: 'Simulate no network, low memory, date boundaries', category: 'Accessibility', status: 'planned' },
+];
+
+const categories = ['All', ...new Set(tools.map(t => t.category))];
+---
+
+<section class="py-20 lg:py-28" id="tools">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        <span class="gradient-text">16 tools</span> shipped. More coming.
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        Every tool is an MCP endpoint your AI can call. Headless rendering, device interaction, performance profiling, and more.
+      </p>
+    </div>
+
+    <!-- Category filters -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10">
+      {categories.map((cat) => (
+        <button
+          data-filter={cat}
+          class:list={[
+            'filter-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-colors',
+            cat === 'All'
+              ? 'bg-brand-purple-deep text-white'
+              : 'bg-brand-card/50 text-slate-400 border border-brand-border hover:bg-brand-card',
+          ]}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Tool grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="tool-grid">
+      {tools.map((tool) => (
+        <div
+          class="tool-card p-5 rounded-lg border border-brand-border bg-brand-card/20 hover:bg-brand-card/40 transition-colors"
+          data-category={tool.category}
+        >
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <code class="font-mono text-brand-purple">{tool.name}</code>
+            {tool.status === 'planned' && (
+              <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 shrink-0">
+                planned
+              </span>
+            )}
+          </div>
+          <p class="text-sm text-slate-400">{tool.description}</p>
+          <div class="mt-2">
+            <span class="text-xs text-slate-400">{tool.category}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-brand-purple-deep', 'text-white');
+        b.classList.add('bg-brand-card/50', 'text-slate-400', 'border', 'border-brand-border');
+      });
+      btn.classList.add('bg-brand-purple-deep', 'text-white');
+      btn.classList.remove('bg-brand-card/50', 'text-slate-400', 'border', 'border-brand-border');
+
+      // Filter cards
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const el = card as HTMLElement;
+        if (filter === 'All' || el.dataset.category === filter) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

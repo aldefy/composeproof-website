@@ -1,0 +1,48 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Install ComposeProof',
+    description: 'One command via Homebrew. No build file changes, no Gradle plugin, no SDK integration needed.',
+    code: 'brew tap aldefy/tap\nbrew install composeproof',
+  },
+  {
+    number: '02',
+    title: 'Add to your MCP config',
+    description: 'Point your AI client at ComposeProof. Works with Claude Code, Gemini CLI, Cursor, Android Studio.',
+    code: '{\n  "mcpServers": {\n    "composeproof": {\n      "command": "composeproof"\n    }\n  }\n}',
+  },
+  {
+    number: '03',
+    title: 'AI has eyes',
+    description: 'Your AI assistant can now render previews, inspect live devices, verify screenshots, and iterate on UI autonomously.',
+    code: 'You: "verify the login screen"\nAI:  renders → verifies → PASS ✓',
+  },
+];
+---
+
+<section class="py-20 lg:py-28">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Up and running in <span class="gradient-text">3 steps</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        Zero-install architecture. No changes to your project's build files.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      {steps.map((step) => (
+        <div class="relative">
+          <div class="text-7xl font-bold text-slate-500 mb-4 font-mono" aria-hidden="true">{step.number}</div>
+          <h3 class="text-2xl font-semibold mb-3">{step.title}</h3>
+          <p class="text-slate-400 mb-5">{step.description}</p>
+          <div class="rounded-lg border border-brand-border bg-brand-darker p-5 font-mono text-sm">
+            <pre class="text-slate-300 whitespace-pre-wrap">{step.code}</pre>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

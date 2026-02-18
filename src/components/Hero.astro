@@ -1,0 +1,90 @@
+---
+---
+
+<section class="relative overflow-hidden pt-20 pb-24 lg:pt-32 lg:pb-36">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-brand-purple/5 via-transparent to-transparent pointer-events-none"></div>
+
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Copy -->
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-border bg-brand-card/50 text-sm text-slate-400 mb-6">
+          <span class="w-2 h-2 rounded-full bg-brand-teal animate-pulse"></span>
+          Open Source MCP Server
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+          Give your AI assistant
+          <span class="gradient-text"> eyes</span>
+          into your Android app
+        </h1>
+
+        <p class="text-lg text-slate-400 mb-8 max-w-lg">
+          ComposeProof is an MCP server that lets AI coding assistants render Compose UI headlessly, inspect live devices, and verify screenshots — no emulator needed.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#waitlist"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-purple-deep text-white font-medium hover:bg-brand-purple-deep/90 transition-colors"
+          >
+            Join Waitlist
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Client logos -->
+        <div class="mt-10 pt-8 border-t border-brand-border/50">
+          <p class="text-xs text-slate-400 uppercase tracking-wider mb-3">Works with any MCP client</p>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+            <span class="px-3 py-1 rounded border border-brand-border bg-brand-card/30">Claude Code</span>
+            <span class="px-3 py-1 rounded border border-brand-border bg-brand-card/30">Cursor</span>
+            <span class="px-3 py-1 rounded border border-brand-border bg-brand-card/30">Gemini CLI</span>
+            <span class="px-3 py-1 rounded border border-brand-border bg-brand-card/30">Android Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Terminal -->
+      <div class="relative">
+        <div class="rounded-xl border border-brand-border bg-brand-darker overflow-hidden glow-purple">
+          <!-- Terminal header -->
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-brand-border bg-brand-card/30">
+            <div class="w-3 h-3 rounded-full bg-red-500/70"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/70"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/70"></div>
+            <span class="ml-2 text-xs text-slate-400 font-mono">composeproof</span>
+          </div>
+          <!-- Terminal content -->
+          <div class="p-5 font-mono text-sm leading-relaxed">
+            <div class="text-slate-400">$ claude</div>
+            <div class="mt-3 text-slate-400">
+              <span class="text-brand-purple">You:</span> verify my login screen matches the spec
+            </div>
+            <div class="mt-3 text-slate-400">
+              <span class="text-brand-teal">AI:</span> I'll render and verify the login screen.
+            </div>
+            <div class="mt-2 text-slate-400">
+              <span class="text-yellow-400/70">→</span> calling <span class="text-brand-purple">render</span> LoginScreenPreview
+            </div>
+            <div class="mt-1 text-slate-400">
+              <span class="text-yellow-400/70">→</span> calling <span class="text-brand-purple">verify</span> mode='verify'
+            </div>
+            <div class="mt-1 text-slate-400">
+              <span class="text-yellow-400/70">→</span> calling <span class="text-brand-purple">diff</span> mode='verify'
+            </div>
+            <div class="mt-3">
+              <span class="text-green-400">PASS</span> <span class="text-slate-400">(3/3) — rendered 1.8s, 99.8% golden match, 0 a11y warnings</span>
+            </div>
+            <div class="mt-2">
+              <span class="text-slate-500">▌</span><span class="cursor-blink text-slate-400">_</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

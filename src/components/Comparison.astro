@@ -1,0 +1,153 @@
+---
+interface Row {
+  feature: string;
+  composeproof: string;
+  droidclaw: string;
+  flipper: string;
+  adbMcp: string;
+  androidStudio: string;
+}
+
+const rows: Row[] = [
+  {
+    feature: 'Headless Compose rendering',
+    composeproof: '✓',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: '✗',
+    androidStudio: 'IDE only',
+  },
+  {
+    feature: 'Golden management',
+    composeproof: '✓',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: '✗',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Device interaction via AI',
+    composeproof: '✓',
+    droidclaw: '✓',
+    flipper: '✗',
+    adbMcp: '✓',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Stuck detection / auto-retry',
+    composeproof: '✗',
+    droidclaw: '✓',
+    flipper: '✗',
+    adbMcp: '✗',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Embedded debug SDK',
+    composeproof: 'Planned',
+    droidclaw: 'Planned',
+    flipper: '✓',
+    adbMcp: '✗',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Works in CI',
+    composeproof: '✓',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: '✓',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'AI-agnostic (MCP)',
+    composeproof: '✓',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: 'Partial',
+    androidStudio: 'Gemini',
+  },
+  {
+    feature: 'Zero-install',
+    composeproof: '✓',
+    droidclaw: '✓',
+    flipper: '✗',
+    adbMcp: '✓',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Spec-driven verification',
+    composeproof: '✓',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: '✗',
+    androidStudio: '✗',
+  },
+  {
+    feature: 'Expert analysis prompts',
+    composeproof: '6 prompts',
+    droidclaw: '✗',
+    flipper: '✗',
+    adbMcp: '✗',
+    androidStudio: '✗',
+  },
+];
+---
+
+<section class="py-20 lg:py-28 bg-brand-darker/50">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        How it compares
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        ComposeProof occupies the headless + AI-integrated quadrant that no other tool covers.
+      </p>
+    </div>
+
+    <div class="max-w-5xl mx-auto overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-brand-border">
+            <th class="text-left py-3 px-4 text-slate-400 font-medium">Feature</th>
+            <th class="text-center py-3 px-4 text-brand-purple font-semibold">ComposeProof</th>
+            <th class="text-center py-3 px-4 text-slate-400 font-medium">DroidClaw</th>
+            <th class="text-center py-3 px-4 text-slate-400 font-medium">Flipper</th>
+            <th class="text-center py-3 px-4 text-slate-400 font-medium">ADB MCP</th>
+            <th class="text-center py-3 px-4 text-slate-400 font-medium">AS Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr class="border-b border-brand-border/50 hover:bg-brand-card/20 transition-colors">
+              <td class="py-3 px-4 text-slate-300">{row.feature}</td>
+              <td class="py-3 px-4 text-center">
+                <span class={row.composeproof === '✓' ? 'text-green-400' : row.composeproof === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                  {row.composeproof}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-center">
+                <span class={row.droidclaw === '✓' ? 'text-green-400' : row.droidclaw === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                  {row.droidclaw}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-center">
+                <span class={row.flipper === '✓' ? 'text-green-400' : row.flipper === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                  {row.flipper}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-center">
+                <span class={row.adbMcp === '✓' ? 'text-green-400' : row.adbMcp === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                  {row.adbMcp}
+                </span>
+              </td>
+              <td class="py-3 px-4 text-center">
+                <span class={row.androidStudio === '✓' ? 'text-green-400' : row.androidStudio === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                  {row.androidStudio}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

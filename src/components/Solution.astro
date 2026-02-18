@@ -1,0 +1,103 @@
+---
+---
+
+<section class="py-20 lg:py-28 bg-brand-darker/50">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Two modes. <span class="gradient-text">Complete coverage.</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        ComposeProof works at build-time and run-time, giving AI assistants full visibility into your Compose UI.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- Build-time: Headless -->
+      <div class="rounded-xl border border-brand-purple/30 bg-brand-card/30 overflow-hidden glow-purple">
+        <div class="p-6 border-b border-brand-border">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Headless Rendering</h3>
+              <p class="text-sm text-slate-400">Build-time / CI</p>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm">
+            Renders <code class="text-brand-purple">@Preview</code> composables headlessly via Roborazzi. No device, no emulator — just PNGs the AI can see and verify.
+          </p>
+        </div>
+        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
+          <div><span class="text-slate-400"># AI renders a preview headlessly</span></div>
+          <div class="mt-1"><span class="text-brand-teal">→</span> render <span class="text-slate-300">LoginScreenPreview</span></div>
+          <div class="text-slate-400 mt-1">  Rendering via Roborazzi... 1.8s</div>
+          <div class="text-green-400 mt-1">  ✓ PNG returned (1080×1920)</div>
+          <div class="mt-2"><span class="text-brand-teal">→</span> diff <span class="text-slate-300">mode='verify'</span></div>
+          <div class="text-green-400 mt-1">  ✓ 99.8% match with golden</div>
+        </div>
+        <div class="p-4 border-t border-brand-border">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">verify</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">diff</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render_batch</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">list_previews</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Run-time: Device -->
+      <div class="rounded-xl border border-brand-teal/30 bg-brand-card/30 overflow-hidden glow-teal">
+        <div class="p-6 border-b border-brand-border">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Device Inspection</h3>
+              <p class="text-sm text-slate-400">Run-time / Live</p>
+            </div>
+          </div>
+          <p class="text-slate-400 text-sm">
+            Connects to a live device via ADB. The AI can screenshot, tap, swipe, inspect UI trees, and navigate your app — closed-loop testing.
+          </p>
+        </div>
+        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
+          <div><span class="text-slate-400"># AI interacts with a live device</span></div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">tap_element "Login"</span></div>
+          <div class="text-green-400 mt-1">  ✓ Tapped, screenshot saved</div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">text "user@test.com"</span></div>
+          <div class="text-green-400 mt-1">  ✓ Text entered</div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">tap_element "Submit"</span></div>
+          <div class="text-green-400 mt-1">  ✓ Tapped, screenshot saved</div>
+        </div>
+        <div class="p-4 border-t border-brand-border">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">device_interact</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">inspect_ui_tree</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">take_screenshot</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">build_and_deploy</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">preflight</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo placeholder -->
+    <div class="mt-12 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-brand-border bg-brand-card/30 text-sm text-slate-400">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Demo coming soon
+      </div>
+    </div>
+  </div>
+</section>

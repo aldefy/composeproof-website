@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #9B7AFF;
+  --color-brand-purple-deep: #7C4DFF;
+  --color-brand-teal: #00BFA5;
+  --color-brand-dark: #0A0E17;
+  --color-brand-darker: #060911;
+  --color-brand-card: #111827;
+  --color-brand-border: #1E293B;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+/* Scale up on larger viewports */
+@media (min-width: 1280px) {
+  html { font-size: 20px; }
+}
+@media (min-width: 1920px) {
+  html { font-size: 24px; }
+}
+@media (min-width: 2560px) {
+  html { font-size: 28px; }
+}
+
+body {
+  background-color: var(--color-brand-dark);
+  color: #e2e8f0;
+}
+
+::selection {
+  background-color: rgba(124, 77, 255, 0.3);
+}
+
+/* Terminal typing animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-brand-purple), var(--color-brand-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(124, 77, 255, 0.15), 0 0 40px rgba(124, 77, 255, 0.05);
+}
+
+.glow-teal {
+  box-shadow: 0 0 20px rgba(0, 191, 165, 0.15), 0 0 40px rgba(0, 191, 165, 0.05);
+}

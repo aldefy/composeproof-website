@@ -1,0 +1,42 @@
+---
+const problems = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+    title: 'AI can read code but can\'t see the app',
+    description: 'Your AI assistant writes Compose UI code but has zero visual feedback. It can\'t tell if a button is misaligned, a color is wrong, or a layout is broken.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+    title: 'Debugging is manual and slow',
+    description: 'Run the app, navigate to the screen, check the output, copy the error, paste it back. Every iteration requires you as the middleman.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+    title: 'Visual testing needs human eyes',
+    description: 'Screenshot tests exist, but setting them up is painful and reviewing diffs requires you to look. The AI should handle this end-to-end.',
+  },
+];
+---
+
+<section class="py-20 lg:py-28">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        The problem with AI + Android today
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        AI coding assistants are powerful at writing code, but blind when it comes to UI. The feedback loop is broken.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {problems.map((problem) => (
+        <div class="p-8 rounded-xl border border-brand-border bg-brand-card/30 hover:bg-brand-card/50 transition-colors">
+          <div class="text-red-400/80 mb-4" set:html={problem.icon} />
+          <h3 class="text-xl font-semibold mb-3">{problem.title}</h3>
+          <p class="text-slate-400 leading-relaxed">{problem.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

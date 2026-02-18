@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://aldefy.github.io',
-  base: '/composeproof-website',
+  site: 'https://composeproof.dev',
   vite: {
     plugins: [tailwindcss()],
   },

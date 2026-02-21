@@ -2,21 +2,21 @@
 const steps = [
   {
     number: '01',
-    title: 'Install ComposeProof',
-    description: 'One command via Homebrew. No build file changes, no Gradle plugin, no SDK integration needed.',
-    code: 'brew tap aldefy/tap\nbrew install composeproof',
+    title: 'Run the setup wizard',
+    description: 'One command. Installs the binary, picks your AI agents (Claude Code, Gemini CLI, Cursor), configures MCP, and optionally installs the Compose UI skill.',
+    code: 'npx composeproof',
   },
   {
     number: '02',
-    title: 'Add to your MCP config',
-    description: 'Point your AI client at ComposeProof. Works with Claude Code, Gemini CLI, Cursor, Android Studio.',
-    code: '{\n  "mcpServers": {\n    "composeproof": {\n      "command": "composeproof"\n    }\n  }\n}',
+    title: 'AI learns your patterns',
+    description: 'Optionally scan your Claude Code sessions for Compose corrections. Your past fixes become anti-patterns that every AI agent avoids.',
+    code: 'npx composeproof learn',
   },
   {
     number: '03',
     title: 'AI has eyes',
-    description: 'Your AI assistant can now render previews, inspect live devices, verify screenshots, and iterate on UI autonomously.',
-    code: 'You: "verify the login screen"\nAI:  renders → verifies → PASS ✓',
+    description: 'Your AI assistant renders previews, inspects live devices, verifies screenshots, and iterates on UI autonomously — with the skill guiding every step.',
+    code: 'You: "verify the login screen"\nAI:  renders → reviews → fixes → PASS ✓',
   },
 ];
 ---

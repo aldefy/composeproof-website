@@ -1,0 +1,106 @@
+---
+const withoutSkill = [
+  { icon: '✍️', text: 'AI writes Compose code' },
+  { icon: '➡️', text: 'Moves on — never checks visually' },
+  { icon: '🐛', text: 'Wrong modifier order, broken layout' },
+  { icon: '😰', text: 'Render fails → panics, random fixes' },
+];
+
+const withSkill = [
+  { icon: '✍️', text: 'WRITE the composable' },
+  { icon: '👀', text: 'RENDER immediately to check' },
+  { icon: '🔍', text: 'REVIEW — alignment, spacing, tap targets' },
+  { icon: '🔧', text: 'FIX using learned anti-patterns' },
+  { icon: '🔄', text: 'RE-RENDER to verify the fix' },
+  { icon: '🛟', text: 'If stuck → asks you with structured choices' },
+];
+
+const behaviors = [
+  { behavior: 'Render after every change', detail: 'AI checks its own work visually, not just at the end' },
+  { behavior: 'Read screenshots critically', detail: 'Checklist: layout, spacing, contrast, states, overflow' },
+  { behavior: 'Apply learned anti-patterns', detail: 'Your past corrections become every AI agent\'s knowledge' },
+  { behavior: 'Recover from errors', detail: 'Decision tree for failures instead of flailing' },
+];
+---
+
+<section class="py-20 lg:py-28" id="skills">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="text-sm font-mono text-brand-teal uppercase tracking-widest mb-3">AI Skill</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Teach AI the <span class="gradient-text">render-review-fix</span> loop
+      </h2>
+      <p class="text-lg text-slate-400 max-w-3xl mx-auto">
+        ComposeProof ships a skill — a behavioral instruction that teaches AI agents <em>how</em> to do Compose UI work, not just gives them tools.
+      </p>
+    </div>
+
+    <!-- Before/After comparison -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <!-- Without -->
+      <div class="rounded-xl border border-red-900/30 bg-red-950/10 p-8">
+        <h3 class="text-xl font-semibold mb-1 text-red-400">Without the skill</h3>
+        <p class="text-sm text-slate-500 mb-6">Default AI behavior</p>
+        <div class="space-y-4">
+          {withoutSkill.map((step) => (
+            <div class="flex items-start gap-3">
+              <span class="text-lg shrink-0">{step.icon}</span>
+              <span class="text-slate-400">{step.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- With -->
+      <div class="rounded-xl border border-brand-teal/30 bg-brand-teal/5 p-8 glow-teal">
+        <h3 class="text-xl font-semibold mb-1 text-brand-teal">With the skill loaded</h3>
+        <p class="text-sm text-slate-500 mb-6">AI knows the rules</p>
+        <div class="space-y-4">
+          {withSkill.map((step) => (
+            <div class="flex items-start gap-3">
+              <span class="text-lg shrink-0">{step.icon}</span>
+              <span class="text-slate-300">{step.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- What changes -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {behaviors.map((b) => (
+        <div class="rounded-lg border border-brand-border bg-brand-card p-6">
+          <h4 class="font-semibold text-white mb-2">{b.behavior}</h4>
+          <p class="text-sm text-slate-400">{b.detail}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Learn from sessions -->
+    <div class="rounded-xl border border-brand-purple/20 bg-brand-purple/5 p-8 md:p-10 glow-purple">
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:flex-1 mb-8 md:mb-0">
+          <h3 class="text-2xl font-bold mb-3">Learn from your sessions</h3>
+          <p class="text-slate-400 mb-4">
+            Scans your Claude Code transcripts for correction patterns — moments where you told the AI "no, do it this way". Extracts them as anti-pattern/pattern pairs and generates a skill.
+          </p>
+          <p class="text-slate-400">
+            Teach Claude Code once, and <strong class="text-white">Gemini CLI, Cursor, and every future agent</strong> all benefit. Your corrections become institutional knowledge.
+          </p>
+        </div>
+        <div class="md:flex-1">
+          <div class="rounded-lg bg-brand-darker border border-brand-border p-5 font-mono text-sm">
+            <pre class="text-slate-300 whitespace-pre-wrap"><span class="text-slate-500">$</span> npx composeproof learn
+
+<span class="text-brand-teal">◆</span>  Scanning 23 sessions...
+<span class="text-brand-teal">│</span>  Found 47 correction patterns
+<span class="text-brand-teal">│</span>  layout (12), state (8), navigation (6)
+<span class="text-brand-teal">│</span>  styling (11), other (10)
+<span class="text-brand-teal">│</span>
+<span class="text-brand-teal">◇</span>  Generated skill with 47 learned patterns</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,193 @@
+---
+const tokenRows = [
+  { tool: 'insights', desc: 'project overview', input: '~200', output: '~500' },
+  { tool: 'list_previews', desc: 'discover 4 @Preview', input: '~200', output: '~300' },
+  { tool: 'take_device_screenshot', desc: 'before', input: '~200', output: '~800' },
+  { tool: 'device_interact', desc: 'swipe drag', input: '~300', output: '~800' },
+  { tool: 'take_device_screenshot', desc: 'after', input: '~200', output: '~800' },
+  { tool: 'get_context', desc: 'scope=structure', input: '~200', output: '~2,000' },
+  { tool: 'generate_report', desc: '', input: '~300', output: '~500' },
+];
+---
+
+<section class="py-20 lg:py-28">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        See it in <span class="gradient-text">action</span>
+      </h2>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+        A real session testing StickerExplode — a Compose Multiplatform sticker canvas app.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+
+      <!-- Left: HTML Report Preview -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Generated Health Report</h3>
+        <div class="rounded-xl border border-brand-border bg-brand-darker overflow-hidden">
+          <!-- Report chrome -->
+          <div class="flex items-center gap-2 px-4 py-2.5 border-b border-brand-border bg-brand-card/30">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+            <span class="ml-2 text-xs text-slate-400 font-mono">composeproof-report.html</span>
+          </div>
+          <!-- Report body -->
+          <div class="p-6 space-y-5">
+            <!-- Score header -->
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 mb-1">Project Health</div>
+                <div class="text-3xl font-bold text-brand-teal">72<span class="text-lg text-slate-400">/100</span></div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs text-slate-500">StickerExplode</div>
+                <div class="text-xs text-slate-500">4 assertions &middot; 0 failed</div>
+              </div>
+            </div>
+
+            <!-- Assertion results -->
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="text-green-400">PASS</span>
+                <span class="text-slate-400">Has @Preview functions (found 4)</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="text-green-400">PASS</span>
+                <span class="text-slate-400">Compose dependencies present</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="text-green-400">PASS</span>
+                <span class="text-slate-400">Kotlin Multiplatform configured</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs font-mono">
+                <span class="text-green-400">PASS</span>
+                <span class="text-slate-400">Golden baseline coverage &gt; 0%</span>
+              </div>
+            </div>
+
+            <!-- Compose Intelligence snippet -->
+            <div class="border-t border-brand-border pt-4">
+              <div class="text-xs uppercase tracking-wider text-slate-500 mb-2">Compose Intelligence</div>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="rounded-lg bg-brand-card/30 p-3">
+                  <div class="text-slate-500">Kotlin Files</div>
+                  <div class="text-lg font-semibold text-slate-200">24</div>
+                </div>
+                <div class="rounded-lg bg-brand-card/30 p-3">
+                  <div class="text-slate-500">Lines of Code</div>
+                  <div class="text-lg font-semibold text-slate-200">1,847</div>
+                </div>
+                <div class="rounded-lg bg-brand-card/30 p-3">
+                  <div class="text-slate-500">@Preview</div>
+                  <div class="text-lg font-semibold text-slate-200">4</div>
+                </div>
+                <div class="rounded-lg bg-brand-card/30 p-3">
+                  <div class="text-slate-500">Sticker Types</div>
+                  <div class="text-lg font-semibold text-slate-200">16</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Context graph hint -->
+            <div class="border-t border-brand-border pt-4">
+              <div class="text-xs uppercase tracking-wider text-slate-500 mb-2">Context Graph</div>
+              <div class="font-mono text-xs text-slate-400 leading-relaxed">
+                <div><span class="text-brand-purple">composeApp</span> <span class="text-slate-500">→</span> commonMain, androidMain, desktopMain, wasmJsMain</div>
+                <div class="mt-1"><span class="text-brand-teal">StickerCanvas.kt</span> <span class="text-slate-500">→</span> StickerData, StickerType, DragState</div>
+                <div class="mt-1 text-slate-500">+ 22 more files...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-slate-400 text-sm mt-4">
+          One command generates a self-contained HTML report — assertions, screenshots, compose intelligence, and context graph. Share it, archive it, diff it.
+        </p>
+      </div>
+
+      <!-- Right: Token Usage -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4">Token Cost</h3>
+        <div class="rounded-xl border border-brand-border bg-brand-darker overflow-hidden">
+          <!-- Table chrome -->
+          <div class="flex items-center gap-2 px-4 py-2.5 border-b border-brand-border bg-brand-card/30">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+            <span class="ml-2 text-xs text-slate-400 font-mono">token usage estimate</span>
+          </div>
+          <div class="p-5">
+            <table class="w-full text-xs font-mono">
+              <thead>
+                <tr class="text-slate-500 text-left">
+                  <th class="pb-3 font-medium">MCP Tool Call</th>
+                  <th class="pb-3 font-medium text-right">Input</th>
+                  <th class="pb-3 font-medium text-right">Output</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-400">
+                {tokenRows.map((row) => (
+                  <tr class="border-t border-brand-border/50">
+                    <td class="py-2.5">
+                      <span class="text-slate-200">{row.tool}</span>
+                      {row.desc && <span class="text-slate-500"> ({row.desc})</span>}
+                    </td>
+                    <td class="py-2.5 text-right">{row.input}</td>
+                    <td class="py-2.5 text-right">{row.output}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr class="border-t-2 border-brand-border">
+                  <td class="pt-3 text-slate-200 font-semibold">Total</td>
+                  <td class="pt-3 text-right text-slate-200">~1,600</td>
+                  <td class="pt-3 text-right text-slate-200">~5,700</td>
+                </tr>
+                <tr>
+                  <td class="pt-2 text-brand-teal font-semibold" colspan="2">Grand total</td>
+                  <td class="pt-2 text-right text-brand-teal font-semibold">~7,300 tokens</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <p class="text-slate-400 text-sm mt-4">
+          Full project analysis — discover, screenshot, interact, and report — for under 7,500 tokens. That's less than reading a single large file.
+        </p>
+
+        <!-- Session flow -->
+        <div class="mt-8">
+          <h3 class="text-xl font-semibold mb-4">Session Flow</h3>
+          <div class="rounded-xl border border-brand-border bg-brand-darker overflow-hidden">
+            <div class="flex items-center gap-2 px-4 py-2.5 border-b border-brand-border bg-brand-card/30">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+              <span class="ml-2 text-xs text-slate-400 font-mono">composeproof session</span>
+            </div>
+            <div class="p-5 font-mono text-xs leading-relaxed">
+              <div class="text-slate-500"># 7 tool calls. Full project story.</div>
+              <div class="mt-2"><span class="text-brand-purple">→</span> <span class="text-slate-200">insights</span></div>
+              <div class="mt-1"><span class="text-brand-purple">→</span> <span class="text-slate-200">list_previews</span></div>
+              <div class="mt-1"><span class="text-brand-teal">→</span> <span class="text-slate-200">take_device_screenshot</span></div>
+              <div class="mt-1"><span class="text-brand-teal">→</span> <span class="text-slate-200">device_interact</span> <span class="text-slate-400">swipe drag</span></div>
+              <div class="mt-1"><span class="text-brand-teal">→</span> <span class="text-slate-200">take_device_screenshot</span></div>
+              <div class="mt-1"><span class="text-brand-purple">→</span> <span class="text-slate-200">get_context</span> <span class="text-slate-400">scope=structure</span></div>
+              <div class="mt-1"><span class="text-brand-purple">→</span> <span class="text-slate-200">generate_report</span></div>
+              <div class="mt-3 text-green-400">✓ Report saved — 42 KB, score 72/100</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm text-slate-500 italic">
+        This isn't a mock — this is a real session captured from Claude Code + ComposeProof.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,117 @@
+---
+---
+
+<section class="py-20 lg:py-28" id="get-started">
+  <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Get started
+      </h2>
+      <p class="text-lg text-slate-400 mb-10">
+        One command. Works on any Compose project, no build file changes.
+      </p>
+
+      <!-- Install command -->
+      <div class="rounded-xl border border-brand-border bg-brand-darker overflow-hidden max-w-lg mx-auto mb-10">
+        <div class="flex items-center gap-2 px-4 py-2.5 border-b border-brand-border bg-brand-card/30">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+          <span class="ml-2 text-xs text-slate-500 font-mono">terminal</span>
+        </div>
+        <div class="p-5 font-mono text-left">
+          <div class="flex items-center gap-3">
+            <span class="text-slate-500 select-none">$</span>
+            <span class="text-lg text-slate-200" id="install-cmd">npx composeproof</span>
+            <button
+              id="copy-btn"
+              class="ml-auto px-2 py-1 rounded text-xs text-slate-500 hover:text-slate-300 hover:bg-brand-card/50 transition-colors"
+              title="Copy to clipboard"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tiers -->
+      <div class="grid sm:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+        <!-- Free -->
+        <div class="rounded-xl border border-brand-border bg-brand-card/30 p-6">
+          <div class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-2">Free</div>
+          <div class="text-2xl font-bold mb-4">$0</div>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-teal mt-0.5">&#10003;</span>
+              Headless rendering + screenshots
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-teal mt-0.5">&#10003;</span>
+              Golden diffing + visual regression
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-teal mt-0.5">&#10003;</span>
+              Device interaction + inspection
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-teal mt-0.5">&#10003;</span>
+              HTML reports + expert prompts
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-teal mt-0.5">&#10003;</span>
+              ~30 MCP tools, all open source
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pro -->
+        <div class="rounded-xl border border-brand-purple/30 bg-brand-card/30 p-6 relative">
+          <div class="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-brand-purple-deep text-xs font-medium text-white">Pro</div>
+          <div class="text-sm font-medium text-brand-purple uppercase tracking-wider mb-2">Pro</div>
+          <div class="text-2xl font-bold mb-1">Coming soon</div>
+          <div class="text-xs text-slate-500 mb-4">Free for early supporters</div>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-purple mt-0.5">&#10003;</span>
+              Everything in Free
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-purple mt-0.5">&#10003;</span>
+              Compose Intelligence (5 tools)
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-purple mt-0.5">&#10003;</span>
+              Embedded Agent (11 tools)
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-purple mt-0.5">&#10003;</span>
+              Companion app
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-purple mt-0.5">&#10003;</span>
+              Session screenshots in reports
+            </li>
+          </ul>
+          <div class="mt-4 pt-4 border-t border-brand-border/50">
+            <code class="text-xs text-slate-500">npx composeproof activate</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('copy-btn')?.addEventListener('click', () => {
+    navigator.clipboard.writeText('npx composeproof');
+    const btn = document.getElementById('copy-btn');
+    if (btn) {
+      btn.innerHTML = '<span class="text-brand-teal">Copied!</span>';
+      setTimeout(() => {
+        btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>';
+      }, 1500);
+    }
+  });
+</script>

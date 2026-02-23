@@ -5,9 +5,6 @@ import Layout from '../layouts/Layout.astro';
 const url = new URL(Astro.request.url);
 const machineId = url.searchParams.get('machine_id') || '';
 const port = url.searchParams.get('port') || '';
-
-const WORKER_URL = 'https://activate.composeproof.dev';
-const authUrl = `${WORKER_URL}/auth/github?machine_id=${encodeURIComponent(machineId)}&port=${encodeURIComponent(port)}`;
 ---
 
 <Layout title="Activate ComposeProof Pro" description="Activate your ComposeProof Pro license with GitHub.">
@@ -20,35 +17,55 @@ const authUrl = `${WORKER_URL}/auth/github?machine_id=${encodeURIComponent(machi
         </svg>
       </div>
 
-      <h1>Activate ComposeProof Pro</h1>
-      <p class="subtitle">Sign in with GitHub to activate your Pro license on this device.</p>
+      <h1>ComposeProof Pro</h1>
 
       {machineId ? (
         <div class="machine-id">
           <span class="label">Device:</span>
           <code>{machineId.substring(0, 8)}...{machineId.substring(machineId.length - 4)}</code>
         </div>
-      ) : (
-        <div class="no-machine-id">
-          <p>Run <code>npx composeproof activate</code> in your terminal to start activation.</p>
-        </div>
-      )}
+      ) : null}
 
-      <a href={authUrl} class="github-button" data-has-machine-id={machineId ? 'true' : 'false'}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        Sign in with GitHub
-      </a>
+      <!-- Paywall: Coming soon -->
+      <div class="coming-soon">
+        <div class="price-tag">Pro</div>
+        <p class="coming-label">Pricing coming soon</p>
+        <p class="coming-sub">The free tier has ~30 tools. Pro adds 17 more.</p>
+      </div>
+
+      <!-- Notify me -->
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/aldefy"
+        method="post"
+        target="popupwindow"
+        class="notify-form"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="you@email.com"
+          required
+          class="notify-input"
+        />
+        <input type="hidden" name="embed" value="1" />
+        <input type="hidden" name="tag" value="pro-interest" />
+        <button type="submit" class="notify-button">Notify me</button>
+      </form>
+      <p class="notify-hint">We'll email you when Pro is available to buy.</p>
 
       <div class="features">
-        <h3>Pro features include:</h3>
+        <h3>What Pro unlocks</h3>
         <ul>
-          <li>Compose Intelligence — semantic queries, lazy list profiling, state inspection</li>
-          <li>Embedded Agent — 11 deep-inspection tools for live Android apps</li>
-          <li>Companion App — real-time debug visualization on your phone</li>
+          <li>Compose Intelligence: semantic queries, lazy list profiling, state inspection, recomposition tracking, stability analysis</li>
+          <li>Embedded Agent: 11 tools that read permissions, lifecycle, navigation, datastore, coroutines, viewmodel state, and more from running apps</li>
+          <li>Companion app: real-time debug visualization on your phone</li>
           <li>Session screenshots in HTML reports</li>
         </ul>
+      </div>
+
+      <div class="free-note">
+        <p>The free tier is live right now:</p>
+        <code>npx composeproof</code>
       </div>
     </div>
   </main>
@@ -80,14 +97,8 @@ const authUrl = `${WORKER_URL}/auth/github?machine_id=${encodeURIComponent(machi
   h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 0 0 0.5rem;
-    color: #f0f0f0;
-  }
-
-  .subtitle {
-    color: #888;
-    font-size: 0.95rem;
     margin: 0 0 1.5rem;
+    color: #f0f0f0;
   }
 
   .machine-id {
@@ -111,50 +122,84 @@ const authUrl = `${WORKER_URL}/auth/github?machine_id=${encodeURIComponent(machi
     font-family: 'JetBrains Mono', monospace;
   }
 
-  .no-machine-id {
-    padding: 1rem;
-    border-radius: 8px;
-    background: rgba(251, 191, 36, 0.08);
-    border: 1px solid rgba(251, 191, 36, 0.2);
+  .coming-soon {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(124, 58, 237, 0.06);
+    border: 1px solid rgba(124, 58, 237, 0.15);
     margin-bottom: 1.5rem;
   }
 
-  .no-machine-id p {
+  .price-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    background: #7c3aed;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .coming-label {
     margin: 0;
-    color: #fbbf24;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e0e0e0;
+  }
+
+  .coming-sub {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .notify-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 340px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .notify-input {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
     font-size: 0.9rem;
   }
 
-  .no-machine-id code {
-    font-family: 'JetBrains Mono', monospace;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
+  .notify-input::placeholder {
+    color: #555;
   }
 
-  .github-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.75rem 2rem;
-    border-radius: 10px;
-    background: #f0f0f0;
-    color: #111;
+  .notify-input:focus {
+    outline: none;
+    border-color: #7c3aed;
+  }
+
+  .notify-button {
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: #7c3aed;
+    color: white;
     font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.1s;
-    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
   }
 
-  .github-button:hover {
-    background: #fff;
-    transform: translateY(-1px);
+  .notify-button:hover {
+    background: #6d28d9;
   }
 
-  .github-button[data-has-machine-id='false'] {
-    opacity: 0.5;
-    pointer-events: none;
+  .notify-hint {
+    font-size: 0.75rem;
+    color: #555;
+    margin: 0 0 2rem;
   }
 
   .features {
@@ -180,12 +225,35 @@ const authUrl = `${WORKER_URL}/auth/github?machine_id=${encodeURIComponent(machi
 
   .features li {
     padding: 0.4rem 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #aaa;
   }
 
   .features li::before {
     content: '→ ';
     color: #7c3aed;
+  }
+
+  .free-note {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .free-note p {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .free-note code {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #e0e0e0;
   }
 </style>

@@ -10,7 +10,7 @@ const withSkill = [
   { icon: '✍️', text: 'WRITE the composable' },
   { icon: '👀', text: 'RENDER immediately to check' },
   { icon: '🔍', text: 'REVIEW — alignment, spacing, tap targets' },
-  { icon: '🔧', text: 'FIX using learned anti-patterns' },
+  { icon: '🔧', text: 'FIX based on screenshot feedback' },
   { icon: '🔄', text: 'RE-RENDER to verify the fix' },
   { icon: '🛟', text: 'If stuck → asks you with structured choices' },
 ];
@@ -18,7 +18,7 @@ const withSkill = [
 const behaviors = [
   { behavior: 'Render after every change', detail: 'AI checks its own work visually, not just at the end' },
   { behavior: 'Read screenshots critically', detail: 'Checklist: layout, spacing, contrast, states, overflow' },
-  { behavior: 'Apply learned anti-patterns', detail: 'Your past corrections become every AI agent\'s knowledge' },
+  { behavior: 'Mock and verify APIs', detail: 'Swap backend responses on-device, screenshot every state' },
   { behavior: 'Recover from errors', detail: 'Decision tree for failures instead of flailing' },
 ];
 ---
@@ -76,28 +76,27 @@ const behaviors = [
       ))}
     </div>
 
-    <!-- Learn from sessions -->
+    <!-- End-to-end highlight -->
     <div class="rounded-xl border border-brand-purple/20 bg-brand-purple/5 p-8 md:p-10 glow-purple">
       <div class="md:flex md:items-center md:gap-12">
         <div class="md:flex-1 mb-8 md:mb-0">
-          <h3 class="text-2xl font-bold mb-3">Learn from your sessions</h3>
+          <h3 class="text-2xl font-bold mb-3">The full loop, not just screenshots</h3>
           <p class="text-slate-400 mb-4">
-            Scans your Claude Code transcripts for correction patterns — moments where you told the AI "no, do it this way". Extracts them as anti-pattern/pattern pairs and generates a skill.
+            AI writes the code, renders it headlessly, generates edge-case tests, mocks backend APIs on a real device, and screenshots every state. One prompt, full verification.
           </p>
           <p class="text-slate-400">
-            Teach Claude Code once, and <strong class="text-white">Gemini CLI, Cursor, and every future agent</strong> all benefit. Your corrections become institutional knowledge.
+            Works with <strong class="text-white">Claude Code, Gemini CLI, Cursor, and any MCP client</strong>. Same 40 tools, same skill, every agent.
           </p>
         </div>
         <div class="md:flex-1">
           <div class="rounded-lg bg-brand-darker border border-brand-border p-5 font-mono text-sm">
-            <pre class="text-slate-300 whitespace-pre-wrap"><span class="text-slate-500">$</span> npx composeproof learn
+            <pre class="text-slate-300 whitespace-pre-wrap"><span class="text-slate-500">$</span> claude "test OrderScreen with every edge case"
 
-<span class="text-brand-teal">◆</span>  Scanning 23 sessions...
-<span class="text-brand-teal">│</span>  Found 47 correction patterns
-<span class="text-brand-teal">│</span>  layout (12), state (8), navigation (6)
-<span class="text-brand-teal">│</span>  styling (11), other (10)
-<span class="text-brand-teal">│</span>
-<span class="text-brand-teal">◇</span>  Generated skill with 47 learned patterns</pre>
+<span class="text-brand-teal">→</span> generate_edge_cases OrderScreen.kt
+<span class="text-brand-teal">→</span> render_batch 12 previews
+<span class="text-brand-teal">→</span> mock_api GET /orders → empty, error, 500 items
+<span class="text-brand-teal">→</span> take_screenshot × 3 device states
+<span class="text-green-400">PASS</span> 15/15 — 0 overflows, 0 crashes</pre>
           </div>
         </div>
       </div>

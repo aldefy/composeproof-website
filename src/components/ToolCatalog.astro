@@ -40,13 +40,23 @@ const tools: Tool[] = [
   { name: 'ui-reviewer', description: 'Visual quality — spacing, typography, Material 3 compliance', category: 'Expert Prompts', status: 'shipped' },
   { name: 'screenshot-test-writer', description: 'Generate test code for Paparazzi, Roborazzi, or goldens', category: 'Expert Prompts', status: 'shipped' },
   { name: 'spec-verifier', description: 'Full spec-driven verification — parse spec, map, verify, report', category: 'Expert Prompts', status: 'shipped' },
+  // Edge-Case Testing & API Mocking (v1.1)
+  { name: 'generate_edge_cases', description: 'Analyze composable types and suggest edge-case @Preview tests', category: 'Testing', status: 'shipped' },
+  { name: 'mock_api', description: 'Start/stop mock API server — intercept real API calls on device', category: 'Testing', status: 'shipped' },
+  // Embedded Agent — Compose Intelligence (Wave 2)
+  { name: 'semantic_ui_query', description: 'Query Compose UI tree by semantic role, text, or test tag', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'profile_lazy_list', description: 'Profile LazyColumn/LazyRow scroll performance', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_compose_state', description: 'Read remembered/derived state values from live composables', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'track_recompositions', description: 'Count recompositions per composable per frame', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'analyze_stability', description: 'Report stability classification of composable params', category: 'Embedded Agent', status: 'shipped' },
+  // Embedded Agent — App Internals (Wave 3)
+  { name: 'inspect_shared_preferences', description: 'Read/write SharedPreferences from inside the app', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_viewmodel_state', description: 'Snapshot ViewModel state fields and StateFlow values', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_current_screen', description: 'Get current screen route and visible composables', category: 'Embedded Agent', status: 'shipped' },
+  { name: 'inspect_network_logs', description: 'In-process HTTP traffic capture via OkHttp interceptor', category: 'Embedded Agent', status: 'shipped' },
   // Planned
-  { name: 'audit_accessibility', description: 'Full WCAG 2.1 audit: touch targets, contrast, focus', category: 'Accessibility', status: 'planned' },
-  { name: 'track_recompositions', description: 'Count recompositions per composable per frame', category: 'Compose', status: 'planned' },
-  { name: 'analyze_stability', description: 'Report stability classification of composable params', category: 'Compose', status: 'planned' },
   { name: 'detect_memory_leaks', description: 'LeakCanary heap analysis with reference chains', category: 'Performance', status: 'planned' },
   { name: 'profile_startup', description: 'Cold/warm/hot start breakdown with bottlenecks', category: 'Performance', status: 'planned' },
-  { name: 'test_edge_cases', description: 'Simulate no network, low memory, date boundaries', category: 'Accessibility', status: 'planned' },
 ];
 
 const categories = ['All', ...new Set(tools.map(t => t.category))];
@@ -56,10 +66,10 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        <span class="gradient-text">36 tools</span> built. More coming.
+        <span class="gradient-text">40 tools</span> shipped. More coming.
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        Every tool is an MCP endpoint your AI can call. Headless rendering, device interaction, performance profiling, and more.
+        Every tool is an MCP endpoint your AI can call. Edge-case testing, API mocking, headless rendering, device interaction, and more.
       </p>
     </div>
 

@@ -8,15 +8,15 @@ const steps = [
   },
   {
     number: '02',
-    title: 'AI learns your patterns',
-    description: 'Optionally scan your Claude Code sessions for Compose corrections. Your past fixes become anti-patterns that every AI agent avoids.',
-    code: 'npx composeproof learn',
+    title: 'AI builds and renders',
+    description: 'Your AI assistant writes code, renders previews headlessly, generates edge-case tests, and iterates on UI autonomously.',
+    code: 'You: "build the order screen"\nAI:  writes code → renders 12 edge cases → PASS ✓',
   },
   {
     number: '03',
-    title: 'AI has eyes',
-    description: 'Your AI assistant renders previews, inspects live devices, verifies screenshots, and iterates on UI autonomously — with the skill guiding every step.',
-    code: 'You: "verify the login screen"\nAI:  renders → reviews → fixes → PASS ✓',
+    title: 'Verify end-to-end',
+    description: 'Mock backend APIs on a real device, screenshot every state, and confirm the full loop works. No Postman, no manual QA.',
+    code: 'AI: mock_api GET /orders → empty, error, 500 items\n    take_screenshot × 3 states\n    ✓ all states render correctly',
   },
 ];
 ---

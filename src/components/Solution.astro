@@ -5,10 +5,10 @@
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Three layers. <span class="gradient-text">Complete coverage.</span>
+        Three layers. <span class="gradient-text">End-to-end coverage.</span>
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        ComposeProof works at build-time, run-time, and inside the app process — giving AI assistants full visibility into your Compose UI.
+        From headless rendering to API mocking to in-process inspection — AI gets the full feedback loop, not just screenshots.
       </p>
     </div>
 
@@ -28,24 +28,23 @@
             </div>
           </div>
           <p class="text-slate-400 text-sm">
-            Renders <code class="text-brand-purple">@Preview</code> composables headlessly via Roborazzi. No device, no emulator — just PNGs the AI can see and verify.
+            AI analyzes composable types, generates edge-case <code class="text-brand-purple">@Preview</code> functions, renders them headlessly, and verifies — no device needed.
           </p>
         </div>
         <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
-          <div><span class="text-slate-400"># AI renders a preview headlessly</span></div>
-          <div class="mt-1"><span class="text-brand-teal">→</span> render <span class="text-slate-300">LoginScreenPreview</span></div>
-          <div class="text-slate-400 mt-1">  Rendering via Roborazzi... 1.8s</div>
-          <div class="text-green-400 mt-1">  ✓ PNG returned (1080×1920)</div>
-          <div class="mt-2"><span class="text-brand-teal">→</span> diff <span class="text-slate-300">mode='verify'</span></div>
-          <div class="text-green-400 mt-1">  ✓ 99.8% match with golden</div>
+          <div><span class="text-slate-400"># AI generates and renders edge cases</span></div>
+          <div class="mt-1"><span class="text-brand-teal">→</span> generate_edge_cases <span class="text-slate-300">OrderScreen.kt</span></div>
+          <div class="text-slate-400 mt-1">  12 edge cases: empty, overflow, RTL...</div>
+          <div class="mt-1"><span class="text-brand-teal">→</span> render_batch <span class="text-slate-300">12 previews</span></div>
+          <div class="text-green-400 mt-1">  ✓ 12/12 rendered, 0 overflows</div>
         </div>
         <div class="p-4 border-t border-brand-border">
           <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">generate_edge_cases</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">verify</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">diff</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render_batch</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">list_previews</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">diff</span>
           </div>
         </div>
       </div>
@@ -60,30 +59,30 @@
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-semibold">Device Inspection</h3>
-              <p class="text-sm text-slate-400">Run-time / ADB</p>
+              <h3 class="text-xl font-semibold">API Mocking & Device</h3>
+              <p class="text-sm text-slate-400">Run-time / Zero-install</p>
             </div>
           </div>
           <p class="text-slate-400 text-sm">
-            Connects to a live device via ADB. The AI can screenshot, tap, swipe, inspect UI trees, and navigate your app — closed-loop testing.
+            Mock any API endpoint on a live device — zero app code changes. AI controls what the backend returns, then screenshots the result.
           </p>
         </div>
         <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
-          <div><span class="text-slate-400"># AI interacts with a live device</span></div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">tap_element "Login"</span></div>
-          <div class="text-green-400 mt-1">  ✓ Tapped, screenshot saved</div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">text "user@test.com"</span></div>
-          <div class="text-green-400 mt-1">  ✓ Text entered</div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> device_interact <span class="text-slate-300">tap_element "Submit"</span></div>
-          <div class="text-green-400 mt-1">  ✓ Tapped, screenshot saved</div>
+          <div><span class="text-slate-400"># AI mocks the backend and verifies</span></div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> mock_api <span class="text-slate-300">GET /orders → empty list</span></div>
+          <div class="text-green-400 mt-1">  ✓ Proxy active, stub loaded</div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> take_screenshot</div>
+          <div class="text-green-400 mt-1">  ✓ Empty state renders correctly</div>
+          <div class="mt-1"><span class="text-brand-purple">→</span> mock_api <span class="text-slate-300">GET /orders → 500 error</span></div>
+          <div class="text-green-400 mt-1">  ✓ Error state shows retry button</div>
         </div>
         <div class="p-4 border-t border-brand-border">
           <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">mock_api</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">device_interact</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">inspect_ui_tree</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">take_screenshot</span>
+            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">inspect_ui_tree</span>
             <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">build_and_deploy</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">preflight</span>
           </div>
         </div>
       </div>

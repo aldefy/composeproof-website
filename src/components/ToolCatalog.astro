@@ -33,16 +33,31 @@ const tools: Tool[] = [
   { name: 'inspect_coroutine_state', description: 'Active coroutines — state, dispatchers, job hierarchy', category: 'Embedded Agent', status: 'shipped' },
   { name: 'execute_deeplink', description: 'Fire a deep link URI and report which handler resolved', category: 'Embedded Agent', status: 'shipped' },
   { name: 'simulate_process_death', description: 'Recreate Activity to test save/restore state handling', category: 'Embedded Agent', status: 'shipped' },
-  // Expert Prompts
+  // Context & Reports
+  { name: 'get_context', description: 'Token-budgeted context graph — structure, compose, previews, patterns', category: 'Context', status: 'shipped' },
+  { name: 'configure_context', description: 'Set context profile (performance/balanced/minimal) for token budget', category: 'Context', status: 'shipped' },
+  { name: 'generate_report', description: 'Self-contained HTML report — assertions, screenshots, project state', category: 'Reports', status: 'shipped' },
+  // Companion
+  { name: 'pair_companion', description: 'QR code pairing for the ComposeProof companion debug app', category: 'Companion', status: 'shipped' },
+  // Expert Prompts — Free
   { name: 'accessibility-checker', description: 'WCAG 2.1 audit — touch targets, contrast, TalkBack', category: 'Expert Prompts', status: 'shipped' },
   { name: 'compose-performance', description: 'Recomposition traps — unstable params, lambda allocations', category: 'Expert Prompts', status: 'shipped' },
   { name: 'kmp-architect', description: 'KMP architecture — shared code, expect/actual patterns', category: 'Expert Prompts', status: 'shipped' },
   { name: 'ui-reviewer', description: 'Visual quality — spacing, typography, Material 3 compliance', category: 'Expert Prompts', status: 'shipped' },
   { name: 'screenshot-test-writer', description: 'Generate test code for Paparazzi, Roborazzi, or goldens', category: 'Expert Prompts', status: 'shipped' },
   { name: 'spec-verifier', description: 'Full spec-driven verification — parse spec, map, verify, report', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'compose-skill', description: 'Source-backed Compose best practices — 13 guides from actual androidx code', category: 'Expert Prompts', status: 'shipped' },
+  { name: 'rebound-basics', description: 'Recomposition budget monitoring setup, budget classes, violations', category: 'Expert Prompts', status: 'shipped' },
+  // Expert Prompts — Pro (intelligence layer)
+  { name: 'stability-doctor', description: 'Deep stability diagnosis — combines Rebound + framework source for root cause analysis', category: 'Pro Prompts', status: 'shipped' },
+  { name: 'rebound-advisor', description: 'Interprets budget violations with severity triage and actionable fixes', category: 'Pro Prompts', status: 'shipped' },
+  { name: 'migration-assistant', description: 'Source-backed deprecated pattern migration — accompanist, navigation, pager', category: 'Pro Prompts', status: 'shipped' },
   // Edge-Case Testing & API Mocking (v1.1)
   { name: 'generate_edge_cases', description: 'Analyze composable types and suggest edge-case @Preview tests', category: 'Testing', status: 'shipped' },
   { name: 'mock_api', description: 'Start/stop mock API server — intercept real API calls on device', category: 'Testing', status: 'shipped' },
+  // Code Intelligence — Kartograph (v1.1.2)
+  { name: 'index_project', description: 'AST-based indexing with tree-sitter + vector embeddings (local ONNX). Git-aware incremental updates.', category: 'Code Intelligence', status: 'shipped' },
+  { name: 'semantic_search', description: 'Hybrid search (vector cosine + BM25 keyword + RRF ranking) across indexed codebase', category: 'Code Intelligence', status: 'shipped' },
   // Embedded Agent — Compose Intelligence (Wave 2)
   { name: 'semantic_ui_query', description: 'Query Compose UI tree by semantic role, text, or test tag', category: 'Embedded Agent', status: 'shipped' },
   { name: 'profile_lazy_list', description: 'Profile LazyColumn/LazyRow scroll performance', category: 'Embedded Agent', status: 'shipped' },
@@ -66,7 +81,7 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        <span class="gradient-text">40 tools</span> shipped. More coming.
+        <span class="gradient-text">51 tools</span> shipped. More coming.
       </h2>
       <p class="text-lg text-slate-400 max-w-2xl mx-auto">
         Every tool is an MCP endpoint your AI can call. Edge-case testing, API mocking, headless rendering, device interaction, and more.

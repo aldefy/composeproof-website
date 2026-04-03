@@ -29,8 +29,11 @@ const port = url.searchParams.get('port') || '';
       <!-- Paywall: Coming soon -->
       <div class="coming-soon">
         <div class="price-tag">Pro</div>
-        <p class="coming-label">&#8377;499/month</p>
-        <p class="coming-sub">Free: 21 tools + 8 prompts. Pro adds 19 tools + 3 intelligence prompts.</p>
+        <p class="coming-label" id="activate-price">&#8377;499/month</p>
+        <p class="coming-sub">
+          Free: 21 tools + 8 prompts. Pro adds 19 tools + 3 intelligence prompts.
+          <br/><button id="activate-toggle" class="text-purple-400 hover:underline text-xs mt-1">Show in USD</button>
+        </p>
       </div>
 
       <!-- Notify me -->
@@ -259,3 +262,30 @@ const port = url.searchParams.get('port') || '';
     color: #e0e0e0;
   }
 </style>
+
+<script>
+  const priceEl = document.getElementById('activate-price');
+  const toggleBtn = document.getElementById('activate-toggle');
+  let showingINR = true;
+
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const isIndia = tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta';
+    if (!isIndia) {
+      showingINR = false;
+      if (priceEl) priceEl.textContent = '$9/month';
+      if (toggleBtn) toggleBtn.textContent = 'Show in INR';
+    }
+  } catch (_) {}
+
+  toggleBtn?.addEventListener('click', () => {
+    if (showingINR) {
+      if (priceEl) priceEl.textContent = '$9/month';
+      if (toggleBtn) toggleBtn.textContent = 'Show in INR';
+    } else {
+      if (priceEl) priceEl.innerHTML = '\u20B9499/month';
+      if (toggleBtn) toggleBtn.textContent = 'Show in USD';
+    }
+    showingINR = !showingINR;
+  });
+</script>

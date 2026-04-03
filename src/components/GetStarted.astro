@@ -70,8 +70,14 @@
         <div class="rounded-xl border border-brand-purple/30 bg-brand-card/30 p-6 relative">
           <div class="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-brand-purple-deep text-xs font-medium text-white">Pro</div>
           <div class="text-sm font-medium text-brand-purple uppercase tracking-wider mb-2">Pro</div>
-          <div class="text-2xl font-bold mb-1"><span class="text-lg font-normal text-slate-400">&#8377;</span>499<span class="text-sm font-normal text-slate-500">/mo</span></div>
-          <div class="text-xs text-slate-500 mb-4">Cancel anytime</div>
+          <div class="text-2xl font-bold mb-1" id="pro-price">
+            <span class="text-lg font-normal text-slate-400">&#8377;</span>499<span class="text-sm font-normal text-slate-500">/mo</span>
+          </div>
+          <div class="text-xs text-slate-500 mb-4">
+            <span id="pro-price-note">Cancel anytime</span>
+            <span class="mx-1 text-slate-600">·</span>
+            <button id="toggle-currency" class="text-brand-purple hover:underline">Show in USD</button>
+          </div>
           <ul class="space-y-2 text-sm text-slate-400">
             <li class="flex items-start gap-2">
               <span class="text-brand-purple mt-0.5">&#10003;</span>
@@ -118,5 +124,34 @@
         btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>';
       }, 1500);
     }
+  });
+
+  // PPP currency toggle — INR for India, USD for rest of world
+  const priceEl = document.getElementById('pro-price');
+  const noteEl = document.getElementById('pro-price-note');
+  const toggleBtn = document.getElementById('toggle-currency');
+  let showingINR = true;
+
+  // Auto-detect: if user's timezone is Asia/Kolkata or locale is en-IN, default INR
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const isIndia = tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta' || navigator.language?.startsWith('hi');
+    if (!isIndia) {
+      // Auto-show USD for non-India visitors
+      showingINR = false;
+      if (priceEl) priceEl.innerHTML = '<span class="text-lg font-normal text-slate-400">$</span>9<span class="text-sm font-normal text-slate-500">/mo</span>';
+      if (toggleBtn) toggleBtn.textContent = 'Show in INR';
+    }
+  } catch (_) {}
+
+  toggleBtn?.addEventListener('click', () => {
+    if (showingINR) {
+      if (priceEl) priceEl.innerHTML = '<span class="text-lg font-normal text-slate-400">$</span>9<span class="text-sm font-normal text-slate-500">/mo</span>';
+      if (toggleBtn) toggleBtn.textContent = 'Show in INR';
+    } else {
+      if (priceEl) priceEl.innerHTML = '<span class="text-lg font-normal text-slate-400">\u20B9</span>499<span class="text-sm font-normal text-slate-500">/mo</span>';
+      if (toggleBtn) toggleBtn.textContent = 'Show in USD';
+    }
+    showingINR = !showingINR;
   });
 </script>

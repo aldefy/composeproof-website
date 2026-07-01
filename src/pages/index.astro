@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Problem from '../components/Problem.astro';
 import Solution from '../components/Solution.astro';
@@ -14,17 +15,18 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="ComposeProof — Give AI Eyes Into Your Android App">
+  <Nav />
   <main>
     <Hero />
+    <GetStarted />
     <Problem />
     <Solution />
-    <Demo />
-    <Demos />
     <ToolCatalog />
     <HowItWorks />
+    <Demo />
+    <Demos />
     <Skills />
     <Roadmap />
-    <GetStarted />
   </main>
   <Footer />
 </Layout>

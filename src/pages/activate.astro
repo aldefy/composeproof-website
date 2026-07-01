@@ -26,7 +26,7 @@ const port = url.searchParams.get('port') || '';
         </div>
       ) : null}
 
-      <!-- Paywall: Coming soon -->
+      <!-- Pricing -->
       <div class="coming-soon">
         <div class="price-tag">Pro</div>
         <p class="coming-label" id="activate-price">&#8377;499/month</p>
@@ -36,25 +36,27 @@ const port = url.searchParams.get('port') || '';
         </p>
       </div>
 
-      <!-- Notify me -->
-      <form
-        action="https://buttondown.com/api/emails/embed-subscribe/aldefy"
-        method="post"
-        target="popupwindow"
-        class="notify-form"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="you@email.com"
-          required
-          class="notify-input"
-        />
-        <input type="hidden" name="embed" value="1" />
-        <input type="hidden" name="tag" value="pro-interest" />
-        <button type="submit" class="notify-button">Notify me</button>
-      </form>
-      <p class="notify-hint">We'll email you when Pro is available to buy.</p>
+      <!-- Redirecting state (when CLI passed machine_id) -->
+      <div id="redirecting" style="display:none">
+        <p class="notify-hint" style="margin-bottom:0.5rem">Taking you to secure GitHub + Razorpay checkout…</p>
+        <a id="continue-link" href="#" class="notify-button" style="display:inline-block;text-decoration:none">Continue to checkout</a>
+      </div>
+
+      <!-- CLI instructions (when opened directly, no machine_id) -->
+      <div id="cli-instructions">
+        <a href="https://composeproof-activation.aditlal90.workers.dev/auth/github" class="notify-button" style="display:block;text-decoration:none;text-align:center;margin-bottom:1rem">
+          Subscribe with GitHub — ₹499/mo
+        </a>
+        <p class="notify-hint" style="margin-bottom:0.75rem">
+          Or activate directly from your terminal (binds the license to that device):
+        </p>
+        <div class="free-note" style="margin-top:0;border-top:none;padding-top:0">
+          <code>npx composeproof activate</code>
+        </div>
+        <p class="notify-hint" style="margin-top:0.75rem">
+          Already subscribed on web? Run <code style="font-size:0.8rem">npx composeproof activate</code> on your machine (same GitHub account) to install Pro.
+        </p>
+      </div>
 
       <div class="features">
         <h3>What Pro unlocks</h3>
@@ -264,6 +266,22 @@ const port = url.searchParams.get('port') || '';
 </style>
 
 <script>
+  // If the CLI passed machine_id + port, this is a real activation — send to the worker checkout.
+  const ACTIVATION_ORIGIN = 'https://composeproof-activation.aditlal90.workers.dev';
+  const qp = new URLSearchParams(window.location.search);
+  const machineId = qp.get('machine_id');
+  const port = qp.get('port');
+  if (machineId && port) {
+    const target = `${ACTIVATION_ORIGIN}/auth/github?machine_id=${encodeURIComponent(machineId)}&port=${encodeURIComponent(port)}`;
+    const cli = document.getElementById('cli-instructions');
+    const redir = document.getElementById('redirecting');
+    const cont = document.getElementById('continue-link') as HTMLAnchorElement | null;
+    if (cli) cli.style.display = 'none';
+    if (redir) redir.style.display = 'block';
+    if (cont) cont.href = target;
+    setTimeout(() => { window.location.href = target; }, 1200);
+  }
+
   const priceEl = document.getElementById('activate-price');
   const toggleBtn = document.getElementById('activate-toggle');
   let showingINR = true;

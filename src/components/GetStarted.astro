@@ -107,17 +107,18 @@
               Companion app + session screenshots
             </li>
           </ul>
-          <a
-            href="https://composeproof-activation.aditlal90.workers.dev/auth/github"
-            class="block w-full text-center px-4 py-2.5 rounded-md font-mono font-semibold text-sm transition-transform hover:-translate-y-0.5"
-            style="background:var(--accent);color:#111"
-          >
-            Subscribe with GitHub
+          <!-- Primary: CLI activate (device-bound install in one command) -->
+          <div class="flex items-center gap-2 px-3 py-2.5 rounded-md bg-page font-mono text-sm mb-2" style="border:1px solid var(--accent)">
+            <span class="text-faint select-none">$</span>
+            <span class="text-ink flex-1 text-left whitespace-nowrap overflow-x-auto">npx composeproof activate</span>
+            <button id="pro-copy-btn" class="shrink-0 text-faint hover:text-accent transition-colors" title="Copy" aria-label="Copy activate command">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </button>
+          </div>
+          <p class="text-center text-xs text-dim mb-2">Opens GitHub sign-in + secure Razorpay checkout, binds Pro to this device.</p>
+          <a href="https://composeproof-activation.aditlal90.workers.dev/auth/github" class="block text-center text-xs text-accent hover:underline">
+            or subscribe from your browser →
           </a>
-          <p class="text-center text-xs text-dim mt-2">
-            or activate from your terminal:
-            <a href="/activate" class="text-accent hover:underline">CLI setup</a>
-          </p>
         </div>
 
         <!-- Free — secondary -->
@@ -176,16 +177,18 @@
 </section>
 
 <script>
-  document.getElementById('copy-btn')?.addEventListener('click', () => {
-    navigator.clipboard.writeText('npx composeproof');
-    const btn = document.getElementById('copy-btn');
-    if (btn) {
+  function wireCopy(id, text) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(text);
+      const html = btn.innerHTML;
       btn.innerHTML = '<span class="text-accent text-xs font-mono">✓</span>';
-      setTimeout(() => {
-        btn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>';
-      }, 1500);
-    }
-  });
+      setTimeout(() => { btn.innerHTML = html; }, 1500);
+    });
+  }
+  wireCopy('copy-btn', 'npx composeproof');
+  wireCopy('pro-copy-btn', 'npx composeproof activate');
 
   // PPP currency toggle
   const priceEl = document.getElementById('pro-price');

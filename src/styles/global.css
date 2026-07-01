@@ -1,66 +1,186 @@
 @import "tailwindcss";
 
+/* ============================================================
+   ComposeProof — Instrument line-art system, light + dark.
+   Clean, measure.sh-grade. One accent = amber. No gradients.
+   Semantic tokens swap by [data-theme]; components use them.
+   ============================================================ */
+
+:root {
+  /* LIGHT (default) — warm paper */
+  --bg:        #F7F4EC;
+  --bg-2:      #FDFBF5;
+  --surface:   #FFFFFF;
+  --ink:       #16130E;
+  --ink-dim:   #5c574d;
+  --ink-faint: #8a8478;
+  --line:      #1a17110f;      /* hairline on light */
+  --line-2:    #1a171122;
+  --outline:   #16130E;        /* line-art stroke */
+  --accent:    #0D8A80;        /* teal, tuned for light */
+  --accent-ink:#0a6b62;
+  --ok:        #2E9E5B;
+  --warn:      #D8541F;
+  --shadow:    0 14px 40px -20px rgba(20,16,10,.28);
+}
+
+:root[data-theme="dark"] {
+  --bg:        #070809;
+  --bg-2:      #0a0b0d;
+  --surface:   #0e1013;
+  --ink:       #ECE9E1;
+  --ink-dim:   #A9A49A;
+  --ink-faint: #6c6a63;
+  --line:      #ffffff12;
+  --line-2:    #ffffff22;
+  --outline:   #d6d2c8;        /* line-art stroke on dark */
+  --accent:    #2DD4BF;        /* teal, bright for dark */
+  --accent-ink:#5eead4;
+  --ok:        #7dd08f;
+  --warn:      #e5643f;
+  --shadow:    0 18px 50px -24px rgba(0,0,0,.85);
+}
+
 @theme {
-  --color-brand-purple: #9B7AFF;
-  --color-brand-purple-deep: #7C4DFF;
-  --color-brand-teal: #00BFA5;
-  --color-brand-dark: #0A0E17;
-  --color-brand-darker: #060911;
-  --color-brand-card: #111827;
-  --color-brand-border: #1E293B;
+  /* Map legacy brand-* names to semantic vars so existing components
+     follow the theme automatically. */
+  --color-brand-dark: var(--bg);
+  --color-brand-darker: var(--bg-2);
+  --color-brand-card: var(--surface);
+  --color-brand-border: var(--line-2);
+  --color-brand-border-bright: var(--line-2);
+  --color-brand-purple: var(--accent);
+  --color-brand-purple-deep: var(--accent-ink);
+  --color-brand-cyan: var(--accent);
+  --color-brand-teal: var(--accent);
+  --color-brand-green: var(--ok);
+  --color-brand-red: var(--warn);
 
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --color-accent: var(--accent);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-page: var(--bg);
+  --color-surface: var(--surface);
+
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 18px;
-}
-
-/* Scale up on larger viewports */
-@media (min-width: 1280px) {
-  html { font-size: 20px; }
-}
-@media (min-width: 1920px) {
-  html { font-size: 24px; }
-}
-@media (min-width: 2560px) {
-  html { font-size: 28px; }
-}
+html { scroll-behavior: smooth; font-size: 17px; }
+@media (min-width: 1280px) { html { font-size: 18px; } }
+@media (min-width: 1920px) { html { font-size: 21px; } }
 
 body {
-  background-color: var(--color-brand-dark);
-  color: #e2e8f0;
+  background-color: var(--bg);
+  color: var(--ink-dim);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .35s ease, color .35s ease;
 }
 
-::selection {
-  background-color: rgba(124, 77, 255, 0.3);
+h1, h2, h3 { font-family: var(--font-display); color: var(--ink); letter-spacing: -0.02em; font-weight: 800; }
+::selection { background-color: color-mix(in srgb, var(--accent) 32%, transparent); }
+
+/* Safety net: legacy hardcoded slate/white text → semantic (so light mode never breaks) */
+.text-white,.text-slate-100,.text-slate-200,.text-slate-300 { color: var(--ink); }
+.text-slate-400,.text-slate-500 { color: var(--ink-dim); }
+.text-slate-600,.text-slate-700 { color: var(--ink-faint); }
+
+/* Semantic utilities for new components */
+.bg-page { background-color: var(--bg); }
+.bg-surface { background-color: var(--surface); }
+.text-ink { color: var(--ink); }
+.text-dim { color: var(--ink-dim); }
+.text-faint { color: var(--ink-faint); }
+.text-accent { color: var(--accent); }
+.border-line { border-color: var(--line-2); }
+.stroke-outline { stroke: var(--outline); }
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent);
 }
 
-/* Terminal typing animation */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+/* Hand-drawn marker underline (measure.sh motif), amber */
+.marker {
+  position: relative; white-space: nowrap;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 0.32em;
+  transition: background-size .5s var(--ease-out-expo);
+  padding-bottom: .02em;
+}
+.marker.drawn, [data-reveal].is-visible .marker { background-size: 100% 0.32em; }
+.marker-static {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 0.32em;
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+/* Legacy alias: flat accent, no gradient */
+.gradient-text, .amber { color: var(--accent); -webkit-text-fill-color: currentColor; background: none; }
+
+/* Line-art / instrument backgrounds */
+.inst-grid {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+.dot-grid { background-image: radial-gradient(circle, var(--line-2) 1px, transparent 1px); background-size: 28px 28px; }
+.dot-grid-fine { background-image: radial-gradient(circle, var(--line-2) 1px, transparent 1px); background-size: 22px 22px; }
+
+/* Registration ticks */
+.corner-tr,.corner-bl { position:absolute; width:14px; height:14px; }
+.corner-tr { top:-1px; right:-1px; border-top:1.5px solid var(--accent); border-right:1.5px solid var(--accent); }
+.corner-bl { bottom:-1px; left:-1px; border-bottom:1.5px solid var(--accent); border-left:1.5px solid var(--accent); }
+
+/* Scanline sweep (subtle) */
+@keyframes scanline { 0%{transform:translateY(-100%);opacity:0;} 6%{opacity:1;} 94%{opacity:.5;} 100%{transform:translateY(1200%);opacity:0;} }
+.scanline { background: linear-gradient(90deg, transparent, color-mix(in srgb,var(--accent) 50%,transparent), transparent); animation: scanline 5s linear infinite; }
+@keyframes blink { 0%,50%{opacity:1;} 51%,100%{opacity:0;} }
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+.glow-purple,.glow-cyan,.glow-teal { box-shadow: var(--shadow); }
+
+/* ---- motion ---- */
+:root { --ease-out-expo: cubic-bezier(0.16,1,0.3,1); --ease-spring: cubic-bezier(0.34,1.4,0.5,1); --reveal-dur:.7s; }
+[data-reveal]{opacity:0;transform:translateY(16px);filter:blur(3px);transition:opacity var(--reveal-dur) var(--ease-out-expo),transform var(--reveal-dur) var(--ease-out-expo),filter var(--reveal-dur) var(--ease-out-expo);transition-delay:var(--reveal-delay,0ms);}
+[data-reveal="scale"]{transform:scale(.96);}
+[data-reveal].is-visible{opacity:1;transform:none;filter:blur(0);}
+[data-reveal-group] > *{opacity:0;}
+[data-reveal-group].is-visible > *{animation:revealChild var(--reveal-dur) var(--ease-out-expo) both;}
+[data-reveal-group].is-visible > *:nth-child(1){animation-delay:0s;}
+[data-reveal-group].is-visible > *:nth-child(2){animation-delay:.06s;}
+[data-reveal-group].is-visible > *:nth-child(3){animation-delay:.12s;}
+[data-reveal-group].is-visible > *:nth-child(4){animation-delay:.18s;}
+[data-reveal-group].is-visible > *:nth-child(5){animation-delay:.24s;}
+[data-reveal-group].is-visible > *:nth-child(6){animation-delay:.30s;}
+[data-reveal-group].is-visible > *:nth-child(7){animation-delay:.36s;}
+[data-reveal-group].is-visible > *:nth-child(8){animation-delay:.42s;}
+@keyframes revealChild{from{opacity:0;transform:translateY(16px);filter:blur(4px);}to{opacity:1;transform:none;filter:blur(0);}}
+@keyframes heroRise{from{opacity:0;transform:translateY(20px);filter:blur(5px);}to{opacity:1;transform:none;filter:blur(0);}}
+.hero-rise{opacity:0;animation:heroRise .8s var(--ease-out-expo) both;animation-delay:var(--hero-delay,0ms);}
+.lift{transition:transform .35s var(--ease-spring),border-color .35s var(--ease-out-expo),box-shadow .35s var(--ease-out-expo);}
+.lift:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow);}
+.nav-scrolled{box-shadow:0 1px 0 var(--line-2),0 8px 26px -16px rgba(0,0,0,.35);backdrop-filter:blur(10px);}
+
+/* draw-on stroke for line-art SVG */
+@keyframes drawStroke { to { stroke-dashoffset: 0; } }
+.draw path, .draw line, .draw rect, .draw circle, .draw polyline {
+  stroke-dasharray: var(--len, 1200); stroke-dashoffset: var(--len, 1200);
+}
+.draw.is-visible path, .draw.is-visible line, .draw.is-visible rect,
+.draw.is-visible circle, .draw.is-visible polyline {
+  animation: drawStroke 1.4s var(--ease-out-expo) forwards;
+  animation-delay: var(--draw-delay, 0ms);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-brand-purple), var(--color-brand-teal));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glow effect */
-.glow-purple {
-  box-shadow: 0 0 20px rgba(124, 77, 255, 0.15), 0 0 40px rgba(124, 77, 255, 0.05);
-}
-
-.glow-teal {
-  box-shadow: 0 0 20px rgba(0, 191, 165, 0.15), 0 0 40px rgba(0, 191, 165, 0.05);
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal],[data-reveal-group] > *{opacity:1!important;transform:none!important;filter:none!important;transition:none!important;animation:none!important;}
+  .hero-rise{opacity:1;animation:none;} .scanline,.cursor-blink{animation:none;} .lift:hover{transform:none;}
+  .marker{background-size:100% 0.32em;} .draw path,.draw line,.draw rect,.draw circle,.draw polyline{stroke-dashoffset:0!important;}
 }

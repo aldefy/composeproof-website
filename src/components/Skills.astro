@@ -26,11 +26,11 @@ const behaviors = [
 <section class="py-20 lg:py-28" id="skills">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
-      <p class="text-sm font-mono text-brand-teal uppercase tracking-widest mb-3">AI Skill</p>
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Teach AI the <span class="gradient-text">render-review-fix</span> loop
+      <p class="mono-label mb-3">AI Skill</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        Teach AI the <span class="marker-static">render-review-fix</span> loop
       </h2>
-      <p class="text-lg text-slate-400 max-w-3xl mx-auto">
+      <p class="text-lg text-dim max-w-3xl mx-auto">
         ComposeProof ships a skill — a behavioral instruction that teaches AI agents <em>how</em> to do Compose UI work, not just gives them tools.
       </p>
     </div>
@@ -38,28 +38,28 @@ const behaviors = [
     <!-- Before/After comparison -->
     <div class="grid md:grid-cols-2 gap-8 mb-16">
       <!-- Without -->
-      <div class="rounded-xl border border-red-900/30 bg-red-950/10 p-8">
-        <h3 class="text-xl font-semibold mb-1 text-red-400">Without the skill</h3>
-        <p class="text-sm text-slate-500 mb-6">Default AI behavior</p>
+      <div class="rounded-xl bg-surface p-8" style="border:1px solid color-mix(in srgb,var(--warn) 35%,transparent)">
+        <h3 class="text-xl font-semibold mb-1" style="color:var(--warn)">Without the skill</h3>
+        <p class="text-sm text-faint mb-6">Default AI behavior</p>
         <div class="space-y-4">
           {withoutSkill.map((step) => (
             <div class="flex items-start gap-3">
               <span class="text-lg shrink-0">{step.icon}</span>
-              <span class="text-slate-400">{step.text}</span>
+              <span class="text-dim">{step.text}</span>
             </div>
           ))}
         </div>
       </div>
 
       <!-- With -->
-      <div class="rounded-xl border border-brand-teal/30 bg-brand-teal/5 p-8 glow-teal">
-        <h3 class="text-xl font-semibold mb-1 text-brand-teal">With the skill loaded</h3>
-        <p class="text-sm text-slate-500 mb-6">AI knows the rules</p>
+      <div class="rounded-xl bg-surface p-8" style="border:1px solid color-mix(in srgb,var(--ok) 35%,transparent)">
+        <h3 class="text-xl font-semibold mb-1" style="color:var(--ok)">With the skill loaded</h3>
+        <p class="text-sm text-faint mb-6">AI knows the rules</p>
         <div class="space-y-4">
           {withSkill.map((step) => (
             <div class="flex items-start gap-3">
               <span class="text-lg shrink-0">{step.icon}</span>
-              <span class="text-slate-300">{step.text}</span>
+              <span class="text-ink">{step.text}</span>
             </div>
           ))}
         </div>
@@ -69,34 +69,35 @@ const behaviors = [
     <!-- What changes -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
       {behaviors.map((b) => (
-        <div class="rounded-lg border border-brand-border bg-brand-card p-6">
-          <h4 class="font-semibold text-white mb-2">{b.behavior}</h4>
-          <p class="text-sm text-slate-400">{b.detail}</p>
+        <div class="rounded-lg bg-surface lift p-6" style="border:1px solid var(--line-2)">
+          <h4 class="font-semibold text-ink mb-2">{b.behavior}</h4>
+          <p class="text-sm text-dim">{b.detail}</p>
         </div>
       ))}
     </div>
 
     <!-- End-to-end highlight -->
-    <div class="rounded-xl border border-brand-purple/20 bg-brand-purple/5 p-8 md:p-10 glow-purple">
+    <div class="relative rounded-xl bg-surface p-8 md:p-10" style="border:1px solid var(--line-2)">
+      <div class="corner-tr"></div><div class="corner-bl"></div>
       <div class="md:flex md:items-center md:gap-12">
         <div class="md:flex-1 mb-8 md:mb-0">
-          <h3 class="text-2xl font-bold mb-3">The full loop, not just screenshots</h3>
-          <p class="text-slate-400 mb-4">
+          <h3 class="text-2xl font-bold mb-3 text-ink">The full loop, not <span class="text-accent">just screenshots</span></h3>
+          <p class="text-dim mb-4">
             AI writes the code, renders it headlessly, generates edge-case tests, mocks backend APIs on a real device, and screenshots every state. One prompt, full verification.
           </p>
-          <p class="text-slate-400">
-            Works with <strong class="text-white">Claude Code, Gemini CLI, Cursor, and any MCP client</strong>. Same 40 tools, same skill, every agent.
+          <p class="text-dim">
+            Works with <strong class="text-ink">Claude Code, Gemini CLI, Cursor, and any MCP client</strong>. Same 40 tools, same skill, every agent.
           </p>
         </div>
         <div class="md:flex-1">
-          <div class="rounded-lg bg-brand-darker border border-brand-border p-5 font-mono text-sm">
-            <pre class="text-slate-300 whitespace-pre-wrap"><span class="text-slate-500">$</span> claude "test OrderScreen with every edge case"
+          <div class="rounded-lg p-5 font-mono text-sm" style="background:var(--bg-2);border:1px solid var(--line-2)">
+            <pre class="text-dim whitespace-pre-wrap"><span class="text-faint">$</span> claude "test OrderScreen with every edge case"
 
-<span class="text-brand-teal">→</span> generate_edge_cases OrderScreen.kt
-<span class="text-brand-teal">→</span> render_batch 12 previews
-<span class="text-brand-teal">→</span> mock_api GET /orders → empty, error, 500 items
-<span class="text-brand-teal">→</span> take_screenshot × 3 device states
-<span class="text-green-400">PASS</span> 15/15 — 0 overflows, 0 crashes</pre>
+<span class="text-accent">→</span> generate_edge_cases OrderScreen.kt
+<span class="text-accent">→</span> render_batch 12 previews
+<span class="text-accent">→</span> mock_api GET /orders → empty, error, 500 items
+<span class="text-accent">→</span> take_screenshot × 3 device states
+<span style="color:var(--ok)">PASS</span> 15/15 — 0 overflows, 0 crashes</pre>
           </div>
         </div>
       </div>

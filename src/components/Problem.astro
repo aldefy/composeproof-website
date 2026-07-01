@@ -21,20 +21,21 @@ const problems = [
 <section class="py-20 lg:py-28">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        The problem with AI + Android today
+      <p class="mono-label mb-4">The problem</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        AI is <span class="marker-static">blind</span> to what it builds
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        AI coding assistants are powerful at writing code, but blind when it comes to UI. The feedback loop is broken.
+      <p class="text-lg text-dim max-w-2xl mx-auto font-light">
+        AI coding assistants write Compose UI but never see the result. The feedback loop is broken.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8" data-reveal-group>
       {problems.map((problem) => (
-        <div class="p-8 rounded-xl border border-brand-border bg-brand-card/30 hover:bg-brand-card/50 transition-colors">
-          <div class="text-red-400/80 mb-4" set:html={problem.icon} />
-          <h3 class="text-xl font-semibold mb-3">{problem.title}</h3>
-          <p class="text-slate-400 leading-relaxed">{problem.description}</p>
+        <div class="bg-surface lift p-8 rounded-xl" style="border:1px solid var(--line-2)">
+          <div class="mb-4" style="color:var(--warn)" set:html={problem.icon} />
+          <h3 class="text-xl font-semibold mb-3 text-ink">{problem.title}</h3>
+          <p class="text-dim leading-relaxed">{problem.description}</p>
         </div>
       ))}
     </div>

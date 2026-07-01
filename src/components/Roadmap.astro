@@ -42,43 +42,42 @@ const waves = [
 <section class="py-20 lg:py-28">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Roadmap
+      <div class="mono-label mb-4">build log</div>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        Road<span class="marker-static">map</span>
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      <p class="text-lg text-dim max-w-2xl mx-auto">
         40 tools shipped across 5 waves. Edge-case testing & API mocking shipped. Multiplatform next.
       </p>
     </div>
 
     <div class="space-y-6">
       {waves.map((wave) => (
-        <div class="rounded-xl border border-brand-border bg-brand-card/20 p-6">
+        <div class="relative rounded-xl bg-surface p-6" style="border:1px solid var(--line-2)">
           <div class="flex items-center gap-4 mb-4">
-            <div class:list={[
-              'w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm',
-              wave.status === 'shipped' ? 'bg-green-500/20 text-green-400' :
-              wave.status === 'current' ? 'bg-brand-purple/20 text-brand-purple' :
-              wave.status === 'next' ? 'bg-brand-teal/20 text-brand-teal' :
-              'bg-brand-card text-slate-400',
-            ]}>
+            <div
+              class="w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm"
+              style={
+                wave.status === 'shipped'
+                  ? 'border:1px solid var(--line-2);color:var(--ok)'
+                  : 'border:1px dashed var(--line-2);color:var(--ink-faint)'
+              }
+            >
               {wave.number}
             </div>
             <div>
-              <h3 class="text-lg font-semibold">{wave.title}</h3>
-              <span class:list={[
-                'text-xs uppercase tracking-wider',
-                wave.status === 'shipped' ? 'text-green-400' :
-                wave.status === 'current' ? 'text-brand-purple' :
-                wave.status === 'next' ? 'text-brand-teal' :
-                'text-slate-400',
-              ]}>
+              <h3 class="text-lg font-semibold text-ink">{wave.title}</h3>
+              <span
+                class="mono-label"
+                style={wave.status === 'shipped' ? 'color:var(--ok)' : 'color:var(--ink-faint)'}
+              >
                 {wave.status === 'shipped' ? 'Ready' : wave.status === 'current' ? 'In progress' : wave.status === 'next' ? 'Up next' : 'Planned'}
               </span>
             </div>
           </div>
           <div class="flex flex-wrap gap-2">
             {wave.items.map((item) => (
-              <code class="text-xs px-2 py-1 rounded bg-brand-darker text-slate-400 font-mono">{item}</code>
+              <code class="text-xs px-2 py-1 rounded bg-page text-dim font-mono" style="border:1px solid var(--line-2)">{item}</code>
             ))}
           </div>
         </div>

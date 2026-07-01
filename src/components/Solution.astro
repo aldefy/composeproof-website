@@ -1,124 +1,126 @@
 ---
 ---
 
-<section class="py-20 lg:py-28 bg-brand-darker/50">
+<section class="py-20 lg:py-28" style="background:var(--bg-2)">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Three layers. <span class="gradient-text">End-to-end coverage.</span>
+      <p class="mono-label mb-4">The solution</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        Three layers. <span class="marker-static">Full coverage.</span>
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-        From headless rendering to API mocking to in-process inspection — AI gets the full feedback loop, not just screenshots.
+      <p class="text-lg text-dim max-w-2xl mx-auto font-light">
+        Headless rendering + API mocking + in-process inspection — AI gets the full loop, not just screenshots.
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8" data-reveal-group>
       <!-- Build-time: Headless -->
-      <div class="rounded-xl border border-brand-purple/30 bg-brand-card/30 overflow-hidden glow-purple">
-        <div class="p-6 border-b border-brand-border">
+      <div class="relative bg-surface lift rounded-xl overflow-hidden" style="border:1px solid var(--line-2)">
+        <div class="corner-tr"></div><div class="corner-bl"></div>
+        <div class="p-6" style="border-bottom:1px solid var(--line-2)">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-lg bg-brand-purple/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="border:1px solid var(--line-2);background:var(--bg-2)">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-semibold">Headless Rendering</h3>
-              <p class="text-sm text-slate-400">Build-time / CI</p>
+              <h3 class="text-xl font-semibold text-ink">Headless Rendering</h3>
+              <p class="text-sm text-dim">Build-time / CI</p>
             </div>
           </div>
-          <p class="text-slate-400 text-sm">
-            AI analyzes composable types, generates edge-case <code class="text-brand-purple">@Preview</code> functions, renders them headlessly, and verifies — no device needed.
+          <p class="text-dim text-sm">
+            AI analyzes composable types, generates edge-case <code class="text-accent">@Preview</code> functions, renders them headlessly, and verifies — no device needed.
           </p>
         </div>
-        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
-          <div><span class="text-slate-400"># AI generates and renders edge cases</span></div>
-          <div class="mt-1"><span class="text-brand-teal">→</span> generate_edge_cases <span class="text-slate-300">OrderScreen.kt</span></div>
-          <div class="text-slate-400 mt-1">  12 edge cases: empty, overflow, RTL...</div>
-          <div class="mt-1"><span class="text-brand-teal">→</span> render_batch <span class="text-slate-300">12 previews</span></div>
-          <div class="text-green-400 mt-1">  ✓ 12/12 rendered, 0 overflows</div>
+        <div class="p-5 font-mono text-xs leading-relaxed" style="background:var(--bg-2)">
+          <div><span class="text-dim"># AI generates and renders edge cases</span></div>
+          <div class="mt-1"><span class="text-accent">→</span> generate_edge_cases <span class="text-ink">OrderScreen.kt</span></div>
+          <div class="text-dim mt-1">  12 edge cases: empty, overflow, RTL...</div>
+          <div class="mt-1"><span class="text-accent">→</span> render_batch <span class="text-ink">12 previews</span></div>
+          <div class="mt-1" style="color:var(--ok)">  ✓ 12/12 rendered, 0 overflows</div>
         </div>
-        <div class="p-4 border-t border-brand-border">
+        <div class="p-4" style="border-top:1px solid var(--line-2)">
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">generate_edge_cases</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">verify</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">render_batch</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-purple/10 text-brand-purple">diff</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">generate_edge_cases</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">render</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">verify</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">render_batch</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">diff</span>
           </div>
         </div>
       </div>
 
       <!-- Run-time: Device -->
-      <div class="rounded-xl border border-brand-teal/30 bg-brand-card/30 overflow-hidden glow-teal">
-        <div class="p-6 border-b border-brand-border">
+      <div class="bg-surface lift rounded-xl overflow-hidden" style="border:1px solid var(--line-2)">
+        <div class="p-6" style="border-bottom:1px solid var(--line-2)">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="border:1px solid var(--line-2);background:var(--bg-2)">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-semibold">API Mocking & Device</h3>
-              <p class="text-sm text-slate-400">Run-time / Zero-install</p>
+              <h3 class="text-xl font-semibold text-ink">API Mocking & Device</h3>
+              <p class="text-sm text-dim">Run-time / Zero-install</p>
             </div>
           </div>
-          <p class="text-slate-400 text-sm">
+          <p class="text-dim text-sm">
             Mock any API endpoint on a live device — zero app code changes. AI controls what the backend returns, then screenshots the result.
           </p>
         </div>
-        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
-          <div><span class="text-slate-400"># AI mocks the backend and verifies</span></div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> mock_api <span class="text-slate-300">GET /orders → empty list</span></div>
-          <div class="text-green-400 mt-1">  ✓ Proxy active, stub loaded</div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> take_screenshot</div>
-          <div class="text-green-400 mt-1">  ✓ Empty state renders correctly</div>
-          <div class="mt-1"><span class="text-brand-purple">→</span> mock_api <span class="text-slate-300">GET /orders → 500 error</span></div>
-          <div class="text-green-400 mt-1">  ✓ Error state shows retry button</div>
+        <div class="p-5 font-mono text-xs leading-relaxed" style="background:var(--bg-2)">
+          <div><span class="text-dim"># AI mocks the backend and verifies</span></div>
+          <div class="mt-1"><span class="text-accent">→</span> mock_api <span class="text-ink">GET /orders → empty list</span></div>
+          <div class="mt-1" style="color:var(--ok)">  ✓ Proxy active, stub loaded</div>
+          <div class="mt-1"><span class="text-accent">→</span> take_screenshot</div>
+          <div class="mt-1" style="color:var(--ok)">  ✓ Empty state renders correctly</div>
+          <div class="mt-1"><span class="text-accent">→</span> mock_api <span class="text-ink">GET /orders → 500 error</span></div>
+          <div class="mt-1" style="color:var(--ok)">  ✓ Error state shows retry button</div>
         </div>
-        <div class="p-4 border-t border-brand-border">
+        <div class="p-4" style="border-top:1px solid var(--line-2)">
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">mock_api</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">device_interact</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">take_screenshot</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">inspect_ui_tree</span>
-            <span class="text-xs px-2 py-1 rounded bg-brand-teal/10 text-brand-teal">build_and_deploy</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">mock_api</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">device_interact</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">take_screenshot</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">inspect_ui_tree</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">build_and_deploy</span>
           </div>
         </div>
       </div>
 
       <!-- In-process: Embedded Agent -->
-      <div class="rounded-xl border border-yellow-500/30 bg-brand-card/30 overflow-hidden" style="box-shadow: 0 0 40px rgba(234, 179, 8, 0.05);">
-        <div class="p-6 border-b border-brand-border">
+      <div class="bg-surface lift rounded-xl overflow-hidden" style="border:1px solid var(--line-2)">
+        <div class="p-6" style="border-bottom:1px solid var(--line-2)">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="border:1px solid var(--line-2);background:var(--bg-2)">
+              <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-semibold">Embedded Agent</h3>
-              <p class="text-sm text-slate-400">In-process / SDK</p>
+              <h3 class="text-xl font-semibold text-ink">Embedded Agent</h3>
+              <p class="text-sm text-dim">In-process / SDK</p>
             </div>
           </div>
-          <p class="text-slate-400 text-sm">
+          <p class="text-dim text-sm">
             An in-app debug SDK gives the AI direct access to app internals — permissions, lifecycle, navigation, DataStore, coroutines — from inside the process.
           </p>
         </div>
-        <div class="p-5 font-mono text-xs leading-relaxed bg-brand-darker/50">
-          <div><span class="text-slate-400"># AI inspects app internals</span></div>
-          <div class="mt-1"><span class="text-yellow-400">→</span> inspect_permissions</div>
-          <div class="text-slate-400 mt-1">  CAMERA — denied (rationale needed)</div>
-          <div class="mt-1"><span class="text-yellow-400">→</span> simulate_process_death</div>
-          <div class="text-slate-400 mt-1">  Killed process, relaunched...</div>
-          <div class="text-green-400 mt-1">  ✓ Activity restored after process death</div>
+        <div class="p-5 font-mono text-xs leading-relaxed" style="background:var(--bg-2)">
+          <div><span class="text-dim"># AI inspects app internals</span></div>
+          <div class="mt-1"><span class="text-accent">→</span> inspect_permissions</div>
+          <div class="text-dim mt-1">  CAMERA — denied (rationale needed)</div>
+          <div class="mt-1"><span class="text-accent">→</span> simulate_process_death</div>
+          <div class="text-dim mt-1">  Killed process, relaunched...</div>
+          <div class="mt-1" style="color:var(--ok)">  ✓ Activity restored after process death</div>
         </div>
-        <div class="p-4 border-t border-brand-border">
+        <div class="p-4" style="border-top:1px solid var(--line-2)">
           <div class="flex flex-wrap gap-2">
-            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_permissions</span>
-            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_lifecycle</span>
-            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">inspect_navigation</span>
-            <span class="text-xs px-2 py-1 rounded bg-yellow-500/10 text-yellow-400">simulate_process_death</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">inspect_permissions</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">inspect_lifecycle</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">inspect_navigation</span>
+            <span class="text-xs px-2 py-1 rounded font-mono text-accent" style="border:1px solid var(--line-2)">simulate_process_death</span>
           </div>
         </div>
       </div>

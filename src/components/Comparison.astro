@@ -124,13 +124,14 @@ const rows: Row[] = [
 ];
 ---
 
-<section class="py-20 lg:py-28 bg-brand-darker/50">
+<section class="py-20 lg:py-28 bg-surface">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        How it compares
+      <div class="mono-label mb-4">field comparison</div>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        How it <span class="marker-static">compares</span>
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      <p class="text-lg text-dim max-w-2xl mx-auto">
         ComposeProof occupies the headless + AI-integrated quadrant that no other tool covers.
       </p>
     </div>
@@ -138,41 +139,41 @@ const rows: Row[] = [
     <div class="max-w-5xl mx-auto overflow-x-auto">
       <table class="w-full">
         <thead>
-          <tr class="border-b border-brand-border">
-            <th class="text-left py-3 px-4 text-slate-400 font-medium">Feature</th>
-            <th class="text-center py-3 px-4 text-brand-purple font-semibold">ComposeProof</th>
-            <th class="text-center py-3 px-4 text-slate-400 font-medium">DroidClaw</th>
-            <th class="text-center py-3 px-4 text-slate-400 font-medium">Flipper</th>
-            <th class="text-center py-3 px-4 text-slate-400 font-medium">ADB MCP</th>
-            <th class="text-center py-3 px-4 text-slate-400 font-medium">AS Agent</th>
+          <tr style="border-bottom:1px solid var(--line-2)">
+            <th class="text-left py-3 px-4 mono-label" style="color:var(--ink-faint)">Feature</th>
+            <th class="text-center py-3 px-4 mono-label text-accent">ComposeProof</th>
+            <th class="text-center py-3 px-4 mono-label" style="color:var(--ink-faint)">DroidClaw</th>
+            <th class="text-center py-3 px-4 mono-label" style="color:var(--ink-faint)">Flipper</th>
+            <th class="text-center py-3 px-4 mono-label" style="color:var(--ink-faint)">ADB MCP</th>
+            <th class="text-center py-3 px-4 mono-label" style="color:var(--ink-faint)">AS Agent</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr class="border-b border-brand-border/50 hover:bg-brand-card/20 transition-colors">
-              <td class="py-3 px-4 text-slate-300">{row.feature}</td>
+            <tr class="transition-colors hover:bg-page" style="border-bottom:1px solid var(--line-2)">
+              <td class="py-3 px-4 text-ink">{row.feature}</td>
               <td class="py-3 px-4 text-center">
-                <span class={row.composeproof === '✓' ? 'text-green-400' : row.composeproof === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                <span style={row.composeproof === '✓' ? 'color:var(--ok)' : row.composeproof === '✗' ? 'color:var(--ink-faint)' : ''} class={row.composeproof === '✓' || row.composeproof === '✗' ? '' : 'text-dim'}>
                   {row.composeproof}
                 </span>
               </td>
               <td class="py-3 px-4 text-center">
-                <span class={row.droidclaw === '✓' ? 'text-green-400' : row.droidclaw === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                <span style={row.droidclaw === '✓' ? 'color:var(--ok)' : row.droidclaw === '✗' ? 'color:var(--ink-faint)' : ''} class={row.droidclaw === '✓' || row.droidclaw === '✗' ? '' : 'text-dim'}>
                   {row.droidclaw}
                 </span>
               </td>
               <td class="py-3 px-4 text-center">
-                <span class={row.flipper === '✓' ? 'text-green-400' : row.flipper === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                <span style={row.flipper === '✓' ? 'color:var(--ok)' : row.flipper === '✗' ? 'color:var(--ink-faint)' : ''} class={row.flipper === '✓' || row.flipper === '✗' ? '' : 'text-dim'}>
                   {row.flipper}
                 </span>
               </td>
               <td class="py-3 px-4 text-center">
-                <span class={row.adbMcp === '✓' ? 'text-green-400' : row.adbMcp === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                <span style={row.adbMcp === '✓' ? 'color:var(--ok)' : row.adbMcp === '✗' ? 'color:var(--ink-faint)' : ''} class={row.adbMcp === '✓' || row.adbMcp === '✗' ? '' : 'text-dim'}>
                   {row.adbMcp}
                 </span>
               </td>
               <td class="py-3 px-4 text-center">
-                <span class={row.androidStudio === '✓' ? 'text-green-400' : row.androidStudio === '✗' ? 'text-slate-500' : 'text-slate-300'}>
+                <span style={row.androidStudio === '✓' ? 'color:var(--ok)' : row.androidStudio === '✗' ? 'color:var(--ink-faint)' : ''} class={row.androidStudio === '✓' || row.androidStudio === '✗' ? '' : 'text-dim'}>
                   {row.androidStudio}
                 </span>
               </td>

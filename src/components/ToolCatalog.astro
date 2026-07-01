@@ -80,10 +80,11 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
 <section class="py-20 lg:py-28" id="tools">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-12">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        <span class="gradient-text">51 tools</span> shipped. More coming.
+      <p class="mono-label mb-3">Tool catalog</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        <span class="marker-static">51 tools</span> shipped. More coming.
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      <p class="text-lg text-dim max-w-2xl mx-auto">
         Every tool is an MCP endpoint your AI can call. Edge-case testing, API mocking, headless rendering, device interaction, and more.
       </p>
     </div>
@@ -94,11 +95,12 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
         <button
           data-filter={cat}
           class:list={[
-            'filter-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-colors',
+            'filter-btn px-3.5 py-1.5 rounded-full text-sm font-mono font-medium transition-colors',
             cat === 'All'
-              ? 'bg-brand-purple-deep text-white'
-              : 'bg-brand-card/50 text-slate-400 border border-brand-border hover:bg-brand-card',
+              ? 'bg-accent text-[#111]'
+              : 'bg-surface text-dim hover:text-ink',
           ]}
+          style="border:1px solid var(--line-2)"
         >
           {cat}
         </button>
@@ -106,23 +108,24 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
     </div>
 
     <!-- Tool grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="tool-grid">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="tool-grid" data-reveal>
       {tools.map((tool) => (
         <div
-          class="tool-card p-5 rounded-lg border border-brand-border bg-brand-card/20 hover:bg-brand-card/40 transition-colors"
+          class="tool-card bg-surface lift p-5 rounded-lg"
+          style="border:1px solid var(--line-2)"
           data-category={tool.category}
         >
           <div class="flex items-start justify-between gap-2 mb-2">
-            <code class="font-mono text-brand-purple">{tool.name}</code>
+            <code class="font-mono text-accent">{tool.name}</code>
             {tool.status === 'planned' && (
-              <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 shrink-0">
+              <span class="text-xs px-2 py-0.5 rounded-full shrink-0 font-mono" style="color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);background:color-mix(in srgb,var(--warn) 8%,transparent)">
                 planned
               </span>
             )}
           </div>
-          <p class="text-sm text-slate-400">{tool.description}</p>
+          <p class="text-sm text-dim">{tool.description}</p>
           <div class="mt-2">
-            <span class="text-xs text-slate-400">{tool.category}</span>
+            <span class="text-xs text-faint font-mono">{tool.category}</span>
           </div>
         </div>
       ))}
@@ -137,11 +140,11 @@ const categories = ['All', ...new Set(tools.map(t => t.category))];
 
       // Update active button
       document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('bg-brand-purple-deep', 'text-white');
-        b.classList.add('bg-brand-card/50', 'text-slate-400', 'border', 'border-brand-border');
+        b.classList.remove('bg-accent', 'text-[#111]');
+        b.classList.add('bg-surface', 'text-dim', 'hover:text-ink');
       });
-      btn.classList.add('bg-brand-purple-deep', 'text-white');
-      btn.classList.remove('bg-brand-card/50', 'text-slate-400', 'border', 'border-brand-border');
+      btn.classList.add('bg-accent', 'text-[#111]');
+      btn.classList.remove('bg-surface', 'text-dim', 'hover:text-ink');
 
       // Filter cards
       document.querySelectorAll('.tool-card').forEach(card => {

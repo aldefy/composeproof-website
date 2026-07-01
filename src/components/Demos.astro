@@ -39,22 +39,23 @@ const fullSessionUrl = '/demos/full-session.mp4';
 <section class="py-20 lg:py-28" id="demos">
   <div class="max-w-7xl 2xl:max-w-[85%] mx-auto px-6">
     <div class="text-center mb-6">
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-        Watch the <span class="gradient-text">demo videos</span>
+      <div class="mono-label mb-4">recorded sessions</div>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-ink">
+        Watch the <span class="marker-static">demo videos</span>
       </h2>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+      <p class="text-lg text-dim max-w-2xl mx-auto">
         One prompt, zero human intervention. AI builds the app, discovers UI patterns, tests interactions, and reports results.
       </p>
     </div>
 
-    <p class="text-center text-sm text-slate-500 mb-12">
-      Recorded on a Pixel 9 Pro Fold with <a href="https://github.com/aldefy/StickerExplode" class="text-brand-purple hover:underline" target="_blank" rel="noopener">StickerExplode</a> demo app.
+    <p class="text-center text-sm text-faint mb-12">
+      Recorded on a Pixel 9 Pro Fold with <a href="https://github.com/aldefy/StickerExplode" class="text-accent hover:underline" target="_blank" rel="noopener">StickerExplode</a> demo app.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-8">
+    <div class="grid md:grid-cols-2 gap-8" data-reveal-group>
       {demos.map((demo) => (
-        <div class="rounded-xl border border-brand-border bg-brand-card/20 overflow-hidden">
-          <div class="aspect-video bg-brand-darker relative">
+        <div class="rounded-xl bg-surface lift overflow-hidden" style="border:1px solid var(--line-2)">
+          <div class="aspect-video bg-page relative">
             <video
               class="w-full h-full object-contain"
               controls
@@ -68,18 +69,18 @@ const fullSessionUrl = '/demos/full-session.mp4';
           </div>
           <div class="p-5">
             <div class="flex items-center gap-3 mb-2">
-              <span class="text-sm font-mono text-brand-purple" aria-hidden="true">0{demo.step}</span>
-              <h3 class="text-lg font-semibold">{demo.title}</h3>
+              <span class="text-sm font-mono text-accent" aria-hidden="true">0{demo.step}</span>
+              <h3 class="text-lg font-semibold text-ink">{demo.title}</h3>
             </div>
-            <p class="text-sm text-slate-400">{demo.description}</p>
+            <p class="text-sm text-dim">{demo.description}</p>
           </div>
         </div>
       ))}
     </div>
 
     <!-- Full session -->
-    <div class="mt-10 rounded-xl border border-brand-border bg-brand-card/20 overflow-hidden">
-      <div class="aspect-video bg-brand-darker">
+    <div class="mt-10 rounded-xl bg-surface lift overflow-hidden" style="border:1px solid var(--line-2)">
+      <div class="aspect-video bg-page">
         <video
           class="w-full h-full object-contain"
           controls
@@ -92,8 +93,8 @@ const fullSessionUrl = '/demos/full-session.mp4';
         </video>
       </div>
       <div class="p-5 text-center">
-        <h3 class="text-lg font-semibold mb-1">Full uncut session</h3>
-        <p class="text-sm text-slate-400">6 minutes — from prompt to test report, no edits.</p>
+        <h3 class="text-lg font-semibold mb-1 text-ink">Full uncut session</h3>
+        <p class="text-sm text-dim">6 minutes — from prompt to test report, no edits.</p>
       </div>
     </div>
   </div>

@@ -51,33 +51,42 @@ const waves = [
       </p>
     </div>
 
-    <div class="space-y-6">
+    <div class="grid md:grid-cols-2 gap-5" data-reveal-group>
       {waves.map((wave) => (
-        <div class="relative rounded-xl bg-surface p-6" style="border:1px solid var(--line-2)">
-          <div class="flex items-center gap-4 mb-4">
+        <div
+          class="relative rounded-xl bg-surface p-5 lift"
+          style={
+            wave.status === 'shipped'
+              ? 'border:1px solid var(--line-2)'
+              : 'border:1px solid color-mix(in srgb, var(--accent) 38%, var(--line-2))'
+          }
+        >
+          <div class="flex items-center gap-3 mb-4">
             <div
-              class="w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm"
+              class="w-9 h-9 rounded-lg flex items-center justify-center font-mono font-bold text-sm shrink-0"
               style={
                 wave.status === 'shipped'
                   ? 'border:1px solid var(--line-2);color:var(--ok)'
-                  : 'border:1px dashed var(--line-2);color:var(--ink-faint)'
+                  : 'border:1px dashed var(--accent);color:var(--accent)'
               }
             >
               {wave.number}
             </div>
-            <div>
-              <h3 class="text-lg font-semibold text-ink">{wave.title}</h3>
-              <span
-                class="mono-label"
-                style={wave.status === 'shipped' ? 'color:var(--ok)' : 'color:var(--ink-faint)'}
-              >
-                {wave.status === 'shipped' ? 'Ready' : wave.status === 'current' ? 'In progress' : wave.status === 'next' ? 'Up next' : 'Planned'}
-              </span>
-            </div>
+            <h3 class="text-[15px] font-semibold text-ink leading-tight flex-1">{wave.title}</h3>
+            <span
+              class="mono-label shrink-0 px-2 py-0.5 rounded-full"
+              style={
+                wave.status === 'shipped'
+                  ? 'color:var(--ok);border:1px solid color-mix(in srgb, var(--ok) 35%, transparent)'
+                  : 'color:var(--accent);border:1px solid color-mix(in srgb, var(--accent) 45%, transparent)'
+              }
+            >
+              {wave.status === 'shipped' ? 'Shipped' : 'Planned'}
+            </span>
           </div>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-1.5">
             {wave.items.map((item) => (
-              <code class="text-xs px-2 py-1 rounded bg-page text-dim font-mono" style="border:1px solid var(--line-2)">{item}</code>
+              <code class="text-[11px] px-1.5 py-0.5 rounded bg-page text-dim font-mono" style="border:1px solid var(--line-2)">{item}</code>
             ))}
           </div>
         </div>
